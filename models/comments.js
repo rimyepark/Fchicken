@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
         key:'UserId',
       },
     },
-    userId: {
+    cardId: {
       allowNull: false,
       type: DataTypes.INTEGER,
       references:{

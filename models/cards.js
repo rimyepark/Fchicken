@@ -16,8 +16,8 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'userId', 
       });
       this.belongsTo(models.Colums, { //  1:N 관계 설정을 합니다.
-        targetKey: 'ColumId', 
-        foreignKey: 'columId', 
+        targetKey: 'ColumnId', 
+        foreignKey: 'columnId', 
       });
       this.hasOne(models.Comments, { // 1:N 관계 설정을 합니다.
         sourceKey: 'CardId', 
