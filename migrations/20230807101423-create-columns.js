@@ -31,6 +31,7 @@ module.exports = {
       },
       columnState: {
         allowNull: false,
+        unique: true ,
         type: Sequelize.INTEGER
       },
       createdAt: {
