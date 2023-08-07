@@ -1,0 +1,1 @@
+const ColumnController = require('../controllers/columns.controller');

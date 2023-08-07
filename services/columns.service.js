@@ -1,0 +1,1 @@
+const ColumnRepository = require('../repositories/columns.repository');
