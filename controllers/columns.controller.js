@@ -5,12 +5,16 @@ class ColumnController {
   
     getColumns = async (req, res, next) => {
       try {
-        const Columns = await this.columnService.findAllColumn();
+        const Columns = await this.columnService.findAllColumn({
+          order: [['columnState', 'ASC']]
+        });
+    
         res.status(200).json({ data: Columns });
       } catch (error) {
         res.status(500).json({ error: error.message });
       }
     }
+    
   
 //userId,boardId
     createColumn = async (req, res, next) => {
