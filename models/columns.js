@@ -28,14 +28,6 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    userId: {
-      allowNull: false,
-      type: DataTypes.INTEGER,
-      references:{
-        model:'Users',
-        key:'UserId',
-      },
-    },
     boardId: {
       allowNull: false,
       type: DataTypes.INTEGER,
@@ -48,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.STRING
     },
-    columnState: {
+    columnIndex: {
       allowNull: false,
       unique: true,
       type: DataTypes.INTEGER

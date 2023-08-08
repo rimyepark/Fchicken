@@ -6,7 +6,7 @@ class ColumnController {
     getColumns = async (req, res, next) => {
       try {
         const Columns = await this.columnService.findAllColumn({
-          order: [['columnState', 'ASC']]
+          order: [['columnIndex', 'ASC']]
         });
     
         res.status(200).json({ data: Columns });
@@ -19,8 +19,8 @@ class ColumnController {
 //userId,boardId
     createColumn = async (req, res, next) => {
       try {
-        const { columnName,columnState } = req.body;
-        const createColumnData = await this.columnService.createColumn(columnName,columnState);
+        const { columnName,columnIndex } = req.body;
+        const createColumnData = await this.columnService.createColumn(columnName,columnIndex);
         res.status(201).json({ data: createColumnData });
       } catch (error) {
         res.status(500).json({ error: error.message });

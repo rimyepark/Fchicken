@@ -13,21 +13,21 @@ class ColumnService {
         return {
           ColumnId: Column.ColumnId,
           columnName: Column.columnName,
-          columnState: Column.columnState,
+          columnIndex: Column.columnIndex,
           createdAt: Column.createdAt,
           updatedAt: Column.updatedAt,
         }
       });
     }
   //          userId: CreateColumnData.userId, boardId: CreateColumnData.boardId,
-    createColumn = async (columnName,columnState) => {  
-      const CreateColumnData = await this.columnRepository.createColumn(columnName,columnState);
+    createColumn = async (columnName,columnIndex) => {  
+      const CreateColumnData = await this.columnRepository.createColumn(columnName,columnIndex);
       if (!CreateColumnData) throw new Error("칼럼을 찾을 수 없습니다.");
      
       return {
         ColumnId: CreateColumnData.ColumnId,
           columnName: CreateColumnData.columnName,
-          columnState: CreateColumnData.columnState,
+          columnIndex: CreateColumnData.columnIndex,
       };
     }
   

@@ -13,8 +13,8 @@ class ColumnRepository {
       return column;
     };
   //칼럼 생성 api userId,boardId,
-    createColumn = async (columnName,columnState) => {
-      const createColumn = await Columns.create({columnName,columnState });
+    createColumn = async (columnName,columnIndex) => {
+      const createColumn = await Columns.create({columnName,columnIndex });
       return createColumn;
     }
   // 칼럼 이름 수정 api
@@ -39,9 +39,9 @@ class ColumnRepository {
         const column1 = await Columns.findByPk(column1Id, { transaction });
         const column2 = await Columns.findByPk(column2Id, { transaction });
   
-        const tempColumnState = column1.columnState;
-        column1.columnState = column2.columnState;
-        column2.columnState = tempColumnState;
+        const tempcolumnIndex = column1.columnIndex;
+        column1.columnIndex = column2.columnIndex;
+        column2.columnIndex = tempcolumnIndex;
   
         await column1.save({ transaction });
         await column2.save({ transaction });
