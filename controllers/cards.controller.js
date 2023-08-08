@@ -3,12 +3,14 @@ const CardService = require('../services/cards.service');
 class CardController {
   cardService = new CardService();
 
-  createCard = async (req, res) => {
+  createCard = async (req, res, next) => {
     try {
+      const { columnId } = req.params;
       const { UserId } = res.locals.user;
       const { title, content, cardIndex, cardColor, endDate } = req.body;
 
       const createCardData = await this.cardService.createCard(
+        columnId,
         UserId,
         title,
         content,
