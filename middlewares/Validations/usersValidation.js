@@ -1,8 +1,7 @@
 const Joi = require("joi");
 const { user } = require("./message.json");
-const { route } = require("../../routes/user");
 
-const usersValidation = {
+const userValidation = {
   signInValidation: async (req, res, next) => {
     const body = req.body;
     const schema = Joi.object().keys({
@@ -11,19 +10,20 @@ const usersValidation = {
         .max(30)
         .regex(/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i)
         .required()
-        .message(user.email),
+        .messages(user.email),
       password: Joi.string()
         .empty()
         .min(8)
         .max(20)
         .regex(/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])/)
         .required()
-        .message(user.password),
+        .messages(user.password),
     });
+
     try {
       await schema.validateAsync(body);
-    } catch (error) {
-      return res.status(400).json({ message: error.message });
+    } catch (err) {
+      return res.status(412).json({ message: err.message });
     }
 
     next();
@@ -59,7 +59,7 @@ const usersValidation = {
     }
 
     next();
-  },
+  }, //currentPassword, editPassword, editConfirmPassword
   editPasswordValidation: async (req, res, next) => {
     const body = req.body;
     const schema = Joi.object().keys({
@@ -91,4 +91,5 @@ const usersValidation = {
     next();
   },
 };
-module.exports = usersValidation;
+
+module.exports = userValidation;
