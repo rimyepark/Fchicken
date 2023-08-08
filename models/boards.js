@@ -11,12 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.belongsTo(models.Users, { //  1:N 관계 설정을 합니다.
-        targetKey: 'UserId', 
-        foreignKey: 'userId', 
+      this.hasMany(models.Columns, {
+        sourceKey: 'BoardId', 
+        foreignKey: 'boardId', 
       });
-      
-      this.hasOne(models.Columns, { // 1:N 관계 설정을 합니다.
+
+      this.hasMany(models.BoardInfo, {
         sourceKey: 'BoardId', 
         foreignKey: 'boardId', 
       });
@@ -33,8 +33,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.INTEGER,
       references:{
-        model:'Users',
-        key:'UserId',
+        model:'BoardInfo',
+        key:'userId',
       },
     },
     title: {
@@ -44,10 +44,6 @@ module.exports = (sequelize, DataTypes) => {
     content: {
       allowNull: false,
       type: DataTypes.STRING
-    },
-    createUser: {
-      allowNull: false,
-      type: DataTypes.INTEGER
     },
     color: {
       allowNull: false,
