@@ -11,6 +11,7 @@ const MemoryStore = require("memorystore")(session);
 const ColumnsRouter = require("./routes/columns.route");
 const { SECRET_KEY } = process.env;
 const user = require("./routes/user");
+const BoardRouter =require('./routes/board.route')
 
 const PORT = 5000;
 
@@ -24,14 +25,14 @@ app.use(
     secret: SECRET_KEY,
     resave: false,
     rolling: true,
-    saveUninitialized: false,
+    saveUninitialized: true,
     store: new MemoryStore({ checkPeriod: 1000 * 60 * 60 }),
     cookie: {
       maxAge: 1000 * 60 * 60,
     },
   })
 );
-app.use("/api", [user, ColumnsRouter]);
+app.use("/api", [user,BoardRouter, ColumnsRouter]);
 app.use(express.json());
 
 app.use((req, res, next) => {

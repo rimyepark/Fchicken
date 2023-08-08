@@ -9,21 +9,14 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      userId: {
+      boardInfoId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references:{
-          model:'Users',
-          key:'UserId',
+          model:'BoardInfo',
+          key:'BoardInfoId',
         },
-      },
-      boardId: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references:{
-          model:'Boards',
-          key:'BoardId',
-        },
+        onDelete: 'CASCADE',
       },
       columnName: {
         allowNull: false,

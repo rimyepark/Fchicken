@@ -14,14 +14,15 @@ module.exports = (sequelize, DataTypes) => {
         sourceKey: 'UserId', 
         foreignKey: 'userId', 
       });
-      this.hasMany(models.Cards, { // 1:N 관계 설정을 합니다.
-        sourceKey: 'UserId', 
-        foreignKey: 'userId', 
-      });
-      this.hasMany(models.Comments, { // 1:N 관계 설정을 합니다.
-        sourceKey: 'UserId', 
-        foreignKey: 'userId', 
-      });
+      // 인포를 사용함에따라 필요가 없을 것으로 예상
+      // this.hasMany(models.Cards, { // 1:N 관계 설정을 합니다.
+      //   sourceKey: 'UserId', 
+      //   foreignKey: 'userId', 
+      // });
+      // this.hasMany(models.Comments, { // 1:N 관계 설정을 합니다.
+      //   sourceKey: 'UserId', 
+      //   foreignKey: 'userId', 
+      // });
     }
   }
   Users.init({

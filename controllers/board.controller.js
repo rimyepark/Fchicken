@@ -5,9 +5,11 @@ class BoardController{
 
     createBoard = async (req, res, next) => {
         try{
-            // const { userId } = req.locals.user 로그인 기능 생기면 적용
+            // const userId = req.session.user.userId;
             const { title, content, color } = req.body;
-            const { code, result } = await this.boardService.createBoard({ userId, title, content, color })
+            const { UserId } = req.session.user;
+            console.log("유저아이디값 받아오는지 확인:",UserId)
+            const { code, result } = await this.boardService.createBoard({ userId:UserId, title, content, color })
             return res.status(code).json({ board: result });
          } catch (err) {
             if (err.code) return res.status(err.code).json({ message: err.message });
