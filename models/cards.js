@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
         targetKey: 'UserId', 
         foreignKey: 'userId', 
       });
-      this.belongsTo(models.Colums, { //  1:N 관계 설정을 합니다.
+      this.belongsTo(models.Columns, { //  1:N 관계 설정을 합니다.
         targetKey: 'ColumnId', 
         foreignKey: 'columnId', 
       });

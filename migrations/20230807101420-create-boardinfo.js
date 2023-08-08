@@ -2,8 +2,8 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Boards', {
-      BoardId: {
+    await queryInterface.createTable('BoardInfo', {
+      BoardInfoId: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -14,20 +14,16 @@ module.exports = {
         type: Sequelize.INTEGER,
         references:{
           model:'Users',
-          key:'UserId',
+          key:'userId',
         },
       },
-      title: {
+      boardId: {
         allowNull: false,
-        type: Sequelize.STRING
-      },
-      content: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
-      color: {
-        allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER,
+        references:{
+          model:'Boards',
+          key:'BoardId',
+        },
       },
       createdAt: {
         allowNull: false,
