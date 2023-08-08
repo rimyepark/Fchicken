@@ -2,7 +2,7 @@ const { Cards } = require('../models');
 
 class CardRepository {
   createCard = async (
-    columnId,
+    ColumnId,
     UserId,
     title,
     content,
@@ -11,7 +11,7 @@ class CardRepository {
     endDate
   ) => {
     const createCardData = await Cards.create({
-      columnId,
+      ColumnId,
       UserId,
       title,
       content,

@@ -4,7 +4,7 @@ class CardService {
   cardsRepository = new CardRepository();
 
   createCard = async (
-    columnId,
+    ColumnId,
     UserId,
     title,
     content,
@@ -13,7 +13,7 @@ class CardService {
     endDate
   ) => {
     const createCardData = await this.cardsRepository.createCard(
-      columnId,
+      ColumnId,
       UserId,
       title,
       content,

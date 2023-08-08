@@ -5,12 +5,12 @@ class CardController {
 
   createCard = async (req, res, next) => {
     try {
-      const { columnId } = req.params;
+      const { ColumnId } = req.params;
       const { UserId } = res.locals.user;
       const { title, content, cardIndex, cardColor, endDate } = req.body;
 
       const createCardData = await this.cardService.createCard(
-        columnId,
+        ColumnId,
         UserId,
         title,
         content,
