@@ -9,27 +9,19 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      userId: {
+      boardInfoId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references:{
-          model:'Users',
-          key:'UserId',
-        },
-      },
-      boardId: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references:{
-          model:'Boards',
-          key:'BoardId',
+          model:'BoardInfo',
+          key:'BoardInfoId',
         },
       },
       columnName: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      columnState: {
+      columnIndex: {
         allowNull: false,
         unique: true ,
         type: Sequelize.INTEGER

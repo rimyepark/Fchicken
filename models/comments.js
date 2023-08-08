@@ -11,9 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.belongsTo(models.Users, { //  1:N 관계 설정을 합니다.
-        targetKey: 'UserId', 
-        foreignKey: 'userId', 
+      this.belongsTo(models.BoardInfo, { //  1:N 관계 설정을 합니다.
+        targetKey: 'BoardInfoId', 
+        foreignKey: 'boardInfoId', 
       });
       this.belongsTo(models.Cards, { //  1:N 관계 설정을 합니다.
         targetKey: 'CardId', 
@@ -28,13 +28,13 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    userId: {
+    boardInfoId: {
       allowNull: false,
       type: DataTypes.INTEGER,
       references:{
-        model:'Users',
-        key:'UserId',
-      },
+        model:'BoardInfo',
+        key:'BoardInfoId',
+      },onDelete: 'CASCADE',
     },
     cardId: {
       allowNull: false,
@@ -42,7 +42,7 @@ module.exports = (sequelize, DataTypes) => {
       references:{
         model:'Cards',
         key:'CardId',
-      },
+      },onDelete: 'CASCADE',
     },
     content: {
       allowNull: false,

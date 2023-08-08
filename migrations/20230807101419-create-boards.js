@@ -25,10 +25,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      createUser: {
-        allowNull: false,
-        type: Sequelize.INTEGER
-      },
       color: {
         allowNull: false,
         type: Sequelize.STRING
@@ -46,6 +42,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Boards');
+    await queryInterface.dropTable('BoardInfo');
   }
 };

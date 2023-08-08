@@ -10,15 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      this.hasMany(models.Boards, { // 1:N 관계 설정을 합니다.
-        sourceKey: 'UserId', 
-        foreignKey: 'userId', 
-      });
-      this.hasMany(models.Cards, { // 1:N 관계 설정을 합니다.
-        sourceKey: 'UserId', 
-        foreignKey: 'userId', 
-      });
-      this.hasMany(models.Comments, { // 1:N 관계 설정을 합니다.
+      this.hasMany(models.BoardInfo, { // 1:N 관계 설정을 합니다.
         sourceKey: 'UserId', 
         foreignKey: 'userId', 
       });
