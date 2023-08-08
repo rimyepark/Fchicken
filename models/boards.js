@@ -11,7 +11,6 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-
       this.hasMany(models.BoardInfo, {
         sourceKey: 'BoardId', 
         foreignKey: 'boardId', 
@@ -24,14 +23,6 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       primaryKey: true,
       type: DataTypes.INTEGER
-    },
-    userId: {
-      allowNull: false,
-      type: DataTypes.INTEGER,
-      references:{
-        model:'BoardInfo',
-        key:'userId',
-      },
     },
     title: {
       allowNull: false,

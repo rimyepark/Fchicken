@@ -14,6 +14,10 @@ module.exports = (sequelize, DataTypes) => {
         sourceKey: 'UserId', 
         foreignKey: 'userId', 
       });
+      this.hasMany(models.Boards, { // 1:N 관계 설정을 합니다.
+        sourceKey: 'UserId', 
+        foreignKey: 'userId', 
+      });
     }
   }
   Users.init({
