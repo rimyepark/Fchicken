@@ -6,22 +6,24 @@ const express = require("express");
 const router = express.Router();
 const { Users } = require("../models");
 const { signInValidation, signUpValidation, editPasswordValidation } = require("../middlewares/Validations/usersValidation");
-const authMiddleware = require("../middlewares/auth.js");
+const authMiddleware = require("../middlewares/auth");
 const { off } = require("process");
 
 router.post("/signin", signInValidation, async (req, res) => {
   try {
     const { email, password } = req.body;
     const passwordToCrypto = crypto.pbkdf2Sync(password, SECRET_KEY.toString("hex"), 11524, 64, "sha512").toString("hex");
-
-    const userValid = await Users.findOne({ where: { email: email, password: passwordToCrypto }, attributes: { exclude: ["password"] } });
+    const userValid = await Users.findOne({
+      where: { email: email, password: passwordToCrypto },
+      attributes: { exclude: ["password"] },
+    });
+    console.log(req.session);
 
     if (!userValid) return res.status(412).json({ message: "아이디와 비밀번호가 일치하지 않습니다." });
-
-    req.session.user = userValid;
+    else req.session.user = userValid;
     return res.status(201).json({ message: "로그인 성공" });
-  } catch (e) {
-    console.error(e);
+  } catch (error) {
+    console.error(error);
     return res.status(400).json({ message: "오류가 발생하였습니다." });
   }
 });
