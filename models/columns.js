@@ -15,7 +15,6 @@ module.exports = (sequelize, DataTypes) => {
         targetKey: 'BoardId', 
         foreignKey: 'boardId', 
       });
-      
       this.hasOne(models.Cards, { // 1:N 관계 설정을 합니다.
         sourceKey: 'ColumnId', 
         foreignKey: 'columnId', 
@@ -51,6 +50,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     columnState: {
       allowNull: false,
+      unique: true,
       type: DataTypes.INTEGER
     },
     createdAt: {

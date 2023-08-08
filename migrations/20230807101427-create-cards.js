@@ -43,6 +43,7 @@ module.exports = {
       },
       cardState: {
         allowNull: false,
+        unique: true ,
         type: Sequelize.INTEGER
       },
       cardColor: {
