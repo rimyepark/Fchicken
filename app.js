@@ -5,6 +5,8 @@ const cookieParser = require("cookie-parser");
 const app = express();
 const { SESSION_SECRET_KEY } = process.env;
 const user = require("./routes/user");
+const session = require("express-session");
+const MemoryStore = require("memorystore")(session);
 
 const PORT = 5000;
 

@@ -1,7 +1,8 @@
 const Joi = require("joi");
 const { user } = require("./message.json");
+const { route } = require("../../routes/user");
 
-const userValidation = {
+const usersValidation = {
   signInValidation: async (req, res, next) => {
     const body = req.body;
     const schema = Joi.object().keys({
@@ -90,3 +91,4 @@ const userValidation = {
     next();
   },
 };
+module.exports = usersValidation;
