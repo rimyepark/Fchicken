@@ -9,12 +9,12 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      boardId: {
+      boardInfoId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references:{
-          model:'Boards',
-          key:'BoardId',
+          model:'BoardInfo',
+          key:'BoardInfoId',
         },
       },
       columnName: {

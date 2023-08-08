@@ -19,6 +19,22 @@ module.exports = (sequelize, DataTypes) => {
         sourceKey: "BoardId",
         foreignKey: "boardId",
       });
+
+      this.hasMany(models.Columns, {
+        sourceKey: 'BoardInfoId', 
+        foreignKey: 'boardInfoId', 
+      });
+
+      this.hasMany(models.Cards, {
+        sourceKey: 'BoardInfoId', 
+        foreignKey: 'boardInfoId', 
+      });
+
+      this.hasMany(models.Comments, {
+        sourceKey: 'BoardInfoId', 
+        foreignKey: 'boardInfoId', 
+      });
+
     }
   }
   BoardInfo.init(
