@@ -21,7 +21,7 @@ app.use(express.static("assets"));
 
 app.use("/api", [user]);
 app.use(
-  session({
+  ㅋsession({
     secret: SESSION_SECRET_KEY,
     resave: false,
     rolling: true,
