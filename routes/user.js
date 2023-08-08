@@ -58,27 +58,6 @@ router.get("/", authMiddleware, async (req, res) => {
   }
 });
 
-router.put("/", authMiddleware, async (req, res) => {
-  try {
-    const { name, introduction, profileImage } = req.body;
-    const { userId } = req.session.user;
-
-    const result = await Users.update(
-      { name, introduction, profileImage },
-      {
-        where: {
-          userId,
-        },
-      }
-    );
-    console.log(result);
-    res.status(200).json({ message: "수정에 성공하였습니다." });
-  } catch (e) {
-    console.error(e);
-    return res.status(400).json({ message: "오류가 발생하였습니다." });
-  }
-});
-
 router.put("/editpassword", authMiddleware, editPasswordValidation, async (req, res) => {
   try {
     const { currentPassword, editPassword } = req.body;
