@@ -49,6 +49,14 @@ class ColumnService {
       
       return true
     };
+
+    swapColumns = async (column1Id, column2Id) => {
+      try {
+        return await columnRepository.swapColumns(column1Id, column2Id);
+      } catch (error) {
+        throw error;
+      }
+    }
   }
   
   

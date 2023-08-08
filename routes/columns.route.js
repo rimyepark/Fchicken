@@ -3,9 +3,9 @@ const router = express.Router();
 
 const ColumnController = require('../controllers/columns.controller');
 const columnController = new ColumnController();
-router.get('/column', columnController .getColumns);
-router.post('/column', columnController .createColumn);
-router.put('/column/:ColumnId', columnController .updateColumnName);
-router.delete('/column/:ColumnId', columnController .deleteColumn);
-
+router.get('/column', columnController .getColumns);//칼럼 조회
+router.post('/column', columnController .createColumn);//칼럼 생성
+router.put('/column/:ColumnId', columnController .updateColumnName);//칼럼 이름 수정
+router.delete('/column/:ColumnId', columnController .deleteColumn);//칼럼 삭제
+router.put('/swap-columns/:column1Id/:column2Id', columnController.swapColumns);//칼럼 이동
 module.exports = router;

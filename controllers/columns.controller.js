@@ -50,6 +50,17 @@ class ColumnController {
         res.status(500).json({ error: error.message });
       }
     };
+
+    swapColumns = async (req, res, next) => {
+      const { column1Id, column2Id } = req.params;
+  
+      try {
+        await columnService.swapColumns(column1Id, column2Id);
+        res.status(200).json({ message: 'Columns swapped successfully.' });
+      } catch (error) {
+        next(error);
+      }
+    }
   }
   
   
