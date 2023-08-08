@@ -2,6 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const cookieParser = require("cookie-parser");
+const ColumnsRouter = require("./routes/columns.route");
 const app = express();
 const { SESSION_SECRET_KEY } = process.env;
 const user = require("./routes/user");
@@ -19,9 +20,9 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static("assets"));
 
-app.use("/api", [user]);
+app.use("/api", [user, ColumnsRouter]);
 app.use(
-  ㅋsession({
+  session({
     secret: SESSION_SECRET_KEY,
     resave: false,
     rolling: true,
