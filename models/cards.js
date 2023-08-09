@@ -22,10 +22,6 @@ module.exports = (sequelize, DataTypes) => {
         sourceKey: "CardId",
         foreignKey: "cardId",
       });
-      this.belongsTo(models.Users, {
-        targetKey: "UserId",
-        foreignKey: "userId",
-      });
     }
   }
   Cards.init(
@@ -44,14 +40,6 @@ module.exports = (sequelize, DataTypes) => {
           key: "ColumnId",
         },
         onDelete: "CASCADE",
-      },
-      userId: {
-        allowNull: false,
-        type: DataTypes.INTEGER,
-        references: {
-          model: "Users",
-          key: "UserId",
-        },
       },
       title: {
         allowNull: false,
