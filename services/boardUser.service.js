@@ -29,7 +29,7 @@ class BoardUserService{
         // const user = await userRepository.findOne({email})
         // if(!user) throw { code:401, message:'이메일을 확인해 주세요' }
 
-        const boardInfo = await this.boardUserRepository.invite({ userId:user.UserId, boardId })
+        const boardInfo = await this.boardUserRepository.create({ userId:user.UserId, boardId })
         return { code:200, result:boardInfo }
     }
 
