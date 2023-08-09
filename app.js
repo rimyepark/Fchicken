@@ -12,6 +12,7 @@ const ColumnsRouter = require("./routes/columns.route");
 const CardsRouter = require('./routes/cards.route')
 const { SECRET_KEY } = process.env;
 const user = require("./routes/user");
+const BoardRouter =require('./routes/board.route')
 
 const PORT = 5000;
 
@@ -32,6 +33,7 @@ maxAge: 1000 * 60 * 60,
 },
 })
 );
+
 app.use("/api", [user, ColumnsRouter, CardsRouter]);
 app.use(express.json());
 
