@@ -16,6 +16,11 @@ module.exports = (sequelize, DataTypes) => {
         sourceKey: 'BoardId', 
         foreignKey: 'boardId', 
       });
+
+      this.hasMany(models.Columns, {
+        sourceKey: 'BoardId', 
+        foreignKey: 'boardId', 
+      });
     }
   }
   Boards.init({
@@ -36,6 +41,10 @@ module.exports = (sequelize, DataTypes) => {
     color: {
       allowNull: false,
       type: DataTypes.STRING
+    },
+    createUser:{
+      allowNull: false,
+      type: DataTypes.INTEGER,
     },
     createdAt: {
       allowNull: false,

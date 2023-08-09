@@ -4,11 +4,12 @@ class CommentsController {
   commentsService = new CommentsService();
 
   //댓글 등록
-  createComments = async (req, res) => {
+  createComments = async (req, res, next) => {
     try {
+      const { UserId } = res.locals.user;
       const { cardId } = req.params;
       const { comment } = req.body;
-      const createCommentData = await this.commentsService.createComments({ cardId, comment });
+      const createCommentData = await this.commentsService.createComments({ UserId, cardId, comment });
       res.status(200).json({ data: createCommentData });
     } catch (error) {
       res.status(500).json({ error: error.message });

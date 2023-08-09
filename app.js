@@ -31,7 +31,7 @@ app.use(
   })
 );
 
-app.use("/api", [user, ColumnsRouter, CardsRouter, CommentsRouter]);
+app.use("/api", [user, BoardRouter, ColumnsRouter, CardsRouter, CommentsRouter]);
 
 app.use((req, res, next) => {
   res.locals.user = req.session.user;
