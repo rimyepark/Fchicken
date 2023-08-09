@@ -50,8 +50,8 @@ router.post("/signup", signUpValidation, async (req, res) => {
 
 router.get("/", authMiddleware, async (req, res) => {
   try {
-    const { userId } = req.session.user;
-    const user = await Users.findOne({ where: { userId } });
+    const { UserId } = req.session.user;
+    const user = await Users.findOne({ where: { userId:UserId } });
     res.status(200).json({ user });
   } catch (e) {
     console.error(e);
@@ -62,11 +62,11 @@ router.get("/", authMiddleware, async (req, res) => {
 router.put("/editpassword", authMiddleware, editPasswordValidation, async (req, res) => {
   try {
     const { currentPassword, editPassword } = req.body;
-    const { userId } = req.session.user;
+    const { UserId } = req.session.user;
     const currentPasswordToCrypto = crypto.pbkdf2Sync(currentPassword, SECRET_KEY.toString("hex"), 11524, 64, "sha512").toString("hex");
     const editPasswordToCrypto = crypto.pbkdf2Sync(editPassword, SECRET_KEY.toString("hex"), 11524, 64, "sha512").toString("hex");
 
-    const currentPasswordValidation = await Users.findOne({ where: { userId, password: currentPasswordToCrypto } });
+    const currentPasswordValidation = await Users.findOne({ where: { userId:UserId, password: currentPasswordToCrypto } });
 
     if (!currentPasswordValidation) return res.status(412).json({ message: "현재 비밀번호가 일치하지 않습니다." });
 

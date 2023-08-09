@@ -1,12 +1,16 @@
 const { Boards } = require('../models')
-const { BoardInfo } = require('../models')
+const { Op } = require('sequelize')
 
 
 class BoardRepository{
-    // 모드생성 및, 보드인포 생성
-    create = async ({ userId, title, content, color })=>{
-        const { BoardId } = await Boards.create({ title, content, color })
-        return await BoardInfo.create({ boardId:BoardId, userId})
+    // 보드생성
+    create = async ({ title, content, color })=>{
+        return await Boards.create({ title, content, color })
+    }
+
+    // 보드수정
+    update = async (data, target) =>{
+        return await Boards.update(data, { where:{[Op.and]:target} } )
     }
 }
 

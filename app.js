@@ -9,6 +9,7 @@ const ColumnsRouter = require("./routes/columns.route");
 const CardsRouter = require("./routes/cards.route");
 const { SECRET_KEY } = process.env;
 const user = require("./routes/user");
+const BoardRouter =require('./routes/board.route')
 
 const PORT = 5000;
 
@@ -28,6 +29,7 @@ app.use(
     },
   })
 );
+
 app.use("/api", [user, ColumnsRouter, CardsRouter]);
 app.use(express.json());
 
