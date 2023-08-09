@@ -9,7 +9,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+
       this.belongsTo(models.BoardInfos, {
+
         //  1:N 관계 설정을 합니다.
         targetKey: "BoardInfoId",
         foreignKey: "boardInfoId",
@@ -38,7 +40,9 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.INTEGER,
         references:{
+
           model:'BoardInfos',
+
           key:'BoardInfoId',
         },
       },
