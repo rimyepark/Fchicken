@@ -1,7 +1,9 @@
 const BoardUserRepository = require('../repositories/boardUser.repository')
+const BoardRepository = require('../repositories/board.repository')
 
 class BoardUserService{
     boardUserRepository = new BoardUserRepository()
+    boardRepository = new BoardRepository()
 
     create = async ({ userId, boardId }) =>{
         if(!userId) throw { code:401, message:'생성자를 찾을 수 없습니다.' }
@@ -31,7 +33,17 @@ class BoardUserService{
         return { code:200, result:boardInfo }
     }
 
-    deleteBoard = async
+    deleteBoard = async  ({ userId, boardId }) => {
+
+        if(!userId) throw { code:401, message:'생성자를 찾을 수 없습니다.' }
+
+        if(!boardId) throw { code:401, message:'보드를 찾지 못했습니다.' }
+
+        const info = await this.boardUserRepository.findOne({ userId, boardId })
+        if(userId !== Number(info.userId)) throw { code:403, message:'보드접근 권한이 없습니다.'}
+
+        if(userId === Number(info.userId)) this.boardRepository.delete({userId, boardId})
+    }
 }
 
 module.exports = BoardUserService
