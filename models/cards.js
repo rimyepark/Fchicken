@@ -42,7 +42,8 @@ module.exports = (sequelize, DataTypes) => {
         references: {
           model: "Columns",
           key: "ColumnId",
-        },onDelete: 'CASCADE',
+        },
+        onDelete: "CASCADE",
       },
       userId: {
         allowNull: false,
