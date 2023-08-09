@@ -12,6 +12,11 @@ class BoardRepository{
     update = async (data, target) =>{
         return await Boards.update(data, { where:{[Op.and]:target} } )
     }
+
+    // 보드삭제
+    delete = async (target) => {
+        return await Boards.destroy( { where: {[Op.and]: target} } )
+    }
 }
 
 module.exports = BoardRepository
