@@ -42,10 +42,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.STRING
     },
-    createUser:{
-      allowNull: false,
-      type: DataTypes.INTEGER,
-    },
+    // createUser:{
+    //   allowNull: false,
+    //   type: DataTypes.INTEGER,
+    // },
     createdAt: {
       allowNull: false,
       type: DataTypes.DATE,

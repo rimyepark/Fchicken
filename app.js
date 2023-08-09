@@ -11,6 +11,7 @@ const MemoryStore = require("memorystore")(session);
 const ColumnsRouter = require("./routes/columns.route");
 const CardsRouter = require("./routes/cards.route");
 const CommentsRouter = require("./routes/comments.route");
+const BoardsRouter = require("./routes/board.route");
 const { SECRET_KEY } = process.env;
 const user = require("./routes/user");
 const BoardRouter = require("./routes/board.route");
@@ -35,7 +36,8 @@ app.use(
   })
 );
 
-app.use("/api", [user, BoardRouter, ColumnsRouter, CardsRouter, CommentsRouter]);
+app.use("/api", [user, BoardRouter, ColumnsRouter, BoardsRouter,CardsRouter, CommentsRouter]);
+app.use(express.json());
 
 app.use((req, res, next) => {
   res.locals.user = req.session.user;

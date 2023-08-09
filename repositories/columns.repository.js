@@ -12,10 +12,10 @@ class ColumnRepository {
     return column;
   };
   //칼럼 생성 api userId,boardId,
-  createColumn = async (columnName, columnIndex) => {
-    const createColumn = await Columns.create({ columnName, columnIndex, userId, boardId });
-    return createColumn;
-  };
+    createColumn = async (boardId,columnName,columnIndex) => {
+      const createColumn = await Columns.create({boardId,columnName,columnIndex });
+      return createColumn;
+    }
   // 칼럼 이름 수정 api
   updateColumnName = async (ColumnId, columnName) => {
     const updateColumnData = await Columns.update({ columnName }, { where: { ColumnId } });

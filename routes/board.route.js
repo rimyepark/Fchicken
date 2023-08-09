@@ -5,9 +5,9 @@ const authMiddleware = require("../middlewares/auth");
 const BoardController = require('../controllers/board.controller')
 const boardController = new BoardController();
 
-router.post('/board', authMiddleware, boardController.createBoard);
-router.post('/board/invite/:boardId',authMiddleware, boardController.invite)
-router.put('/board/:boardId', authMiddleware, boardController.putBoard);
-router.delete('/board/:boardId', authMiddleware, boardController.deleteBoard);
+router.post('/boards', authMiddleware, boardController.createBoard);
+router.post('/boards/invite/:boardId',authMiddleware, boardController.invite)
+router.put('/boards/:boardId', authMiddleware, boardController.putBoard);
+router.delete('/boards/:boardId', authMiddleware, boardController.deleteBoard);
 
 module.exports = router;
