@@ -1,6 +1,6 @@
 'use strict';
 const {
-  Model
+  Model, INTEGER
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Comments extends Model {
@@ -12,11 +12,6 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
 
-      this.belongsTo(models.BoardInfos, { //  1:N 관계 설정을 합니다.
-
-        targetKey: 'BoardInfoId', 
-        foreignKey: 'boardInfoId', 
-      });
       this.belongsTo(models.Cards, { //  1:N 관계 설정을 합니다.
         targetKey: 'CardId', 
         foreignKey: 'cardId', 
@@ -30,16 +25,6 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    boardInfoId: {
-      allowNull: false,
-      type: DataTypes.INTEGER,
-      references:{
-
-        model:'BoardInfos',
-
-        key:'BoardInfoId',
-      },onDelete: 'CASCADE',
-    },
     cardId: {
       allowNull: false,
       type: DataTypes.INTEGER,
@@ -47,6 +32,18 @@ module.exports = (sequelize, DataTypes) => {
         model:'Cards',
         key:'CardId',
       },onDelete: 'CASCADE',
+    },
+    userId: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+      references:{
+        model:'CardInfos',
+        key:'userId',
+      },
+    },
+    createUser:{
+      allowNull: false,
+      type: DataTypes.INTEGER,
     },
     content: {
       allowNull: false,

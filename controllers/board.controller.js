@@ -26,8 +26,8 @@ class BoardController{
                 const { UserId } = req.session.user;
                 const { email } = req.body
                 const { boardId } = req.params
-                await this.boardUserService.invite({userId:UserId, boardId, email })
-                return res.status(code).json({message});
+                const { code, result } = await this.boardUserService.invite({userId:UserId, boardId, email })
+                return res.status(code).json({result});
             } catch (err) {
                 if (err.code) return res.status(err.code).json({ message: err.message });
                 console.error(err);
@@ -53,7 +53,10 @@ class BoardController{
     // 보드 삭제기능
 deleteBoard= async (req, res, next) => {
         try{
-            return res.status(code).json({ posts: result });
+            const { boardId } = req.params
+            const { UserId } = req.session.user;
+            const { code, message } = await this.boardService.deleteBoard({ userId:UserId, boardId})
+            return res.status(code).json({ message });
          } catch (err) {
             if (err.code) return res.status(err.code).json({ message: err.message });
             console.error(err);

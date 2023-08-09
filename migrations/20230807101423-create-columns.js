@@ -9,16 +9,13 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      boardInfoId: {
+      boardId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references:{
-
-          model:'BoardInfos',
-
-          key:'BoardInfoId',
-        },
-        onDelete: 'CASCADE',
+        references: {
+          model: "Boards",
+          key: "BoardId",
+        },onDelete: 'CASCADE',
       },
       columnName: {
         allowNull: false,
@@ -26,19 +23,19 @@ module.exports = {
       },
       columnIndex: {
         allowNull: false,
-        unique: true ,
+        unique: true,
         type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.fn("now")
+        defaultValue: Sequelize.fn("now"),
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.fn("now")
-      }
+        defaultValue: Sequelize.fn("now"),
+      },
     });
   },
   async down(queryInterface, Sequelize) {
