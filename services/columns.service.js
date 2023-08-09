@@ -1,11 +1,9 @@
-const ColumnRepository = require('../repositories/columns.repository');
+const ColumnRepository = require("../repositories/columns.repository");
 
 class ColumnService {
+  columnRepository = new ColumnRepository();
 
-    columnRepository = new ColumnRepository();
-
-    //userId: Column.userId,boardId: Column.boardId,
-  
+  //userId: Column.userId,boardId: Column.boardId,
 
     findAllColumn = async() => { 
       const allColumn = await this.columnRepository.findAllColumn();
@@ -37,30 +35,41 @@ class ColumnService {
       const findColumn = await this.columnRepository.findColumnById(ColumnId);
       if (!findColumn) throw new Error("칼럼을 찾지 못하였습니다.");
 
-      await this.columnRepository.updateColumn(columnName);
-      
-      const updateColumnName = await this.columnRepository.findColumnById(ColumnId);
-      return {
-        CcolumnName: updateColumnName.columnName,
-      };
+    return {
+      ColumnId: CreateColumnData.ColumnId,
+      columnName: CreateColumnData.columnName,
+      columnIndex: CreateColumnData.columnIndex,
+      userId: CreateColumnData.userId,
+      boardId: CreateColumnData.boardId,
     };
-  
-    deleteColumn = async (ColumnId) => {
-      await this.columnRepository.findColumnCById(ColumnId);
-      await this.columnRepository.deleteColumn(ColumnId);
-      
-      return true
-    };
+  };
 
-    swapColumns = async (column1Id, column2Id) => {
-      try {
-        return await columnRepository.swapColumns(column1Id, column2Id);
-      } catch (error) {
-        throw error;
-      }
+  updateColumnName = async (columnName) => {
+    const findColumn = await this.columnRepository.findColumnById(ColumnId);
+    if (!findColumn) throw new Error("칼럼을 찾지 못하였습니다.");
+
+    await this.columnRepository.updateColumn(columnName);
+
+    const updateColumnName = await this.columnRepository.findColumnById(ColumnId);
+    return {
+      CcolumnName: updateColumnName.columnName,
+    };
+  };
+
+  deleteColumn = async (ColumnId) => {
+    await this.columnRepository.findColumnCById(ColumnId);
+    await this.columnRepository.deleteColumn(ColumnId);
+
+    return true;
+  };
+
+  swapColumns = async (column1Id, column2Id) => {
+    try {
+      return await columnRepository.swapColumns(column1Id, column2Id);
+    } catch (error) {
+      throw error;
     }
-  }
-  
-  
-  
-  module.exports = ColumnService;
+  };
+}
+
+module.exports = ColumnService;

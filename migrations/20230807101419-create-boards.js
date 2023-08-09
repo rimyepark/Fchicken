@@ -34,6 +34,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('BoardInfo');
+    await queryInterface.dropTable('Boards');
   }
 };

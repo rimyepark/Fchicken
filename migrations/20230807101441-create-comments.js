@@ -13,7 +13,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER,
         references:{
-          model:'BoardInfo',
+
+          model:'BoardInfos',
+
           key:'BoardInfoId',
         },
       },
@@ -24,6 +26,7 @@ module.exports = {
           model:'Cards',
           key:'CardId',
         },
+        onDelete: 'CASCADE',
       },
       content: {
         allowNull: false,
