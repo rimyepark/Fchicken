@@ -13,6 +13,15 @@ class BoardUserService{
         return { code:200, result:'보드그룹 생성에 성공하였습니다.' }
     }
 
+    invite = async ({ userId, boardId, email }) => {
+        if(!userId) throw { code:401, message:'생성자를 찾을 수 없습니다.' }
+
+        if(!boardId) throw { code:401, message:'보드를 찾지 못했습니다.' }
+        // 유저아키텍쳐패턴 적용완료시 사용가능
+        // const user = await userRepository.findOne({email})
+        // if(!user) throw { code:401, message:'이메일을 확인해 주세요' }
+
+    }
 }
 
 module.exports = BoardUserService

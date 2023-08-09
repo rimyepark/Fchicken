@@ -34,7 +34,7 @@ maxAge: 1000 * 60 * 60,
 })
 );
 
-app.use("/api", [user, ColumnsRouter, CardsRouter]);
+app.use("/api", [user, BoardRouter, ColumnsRouter, CardsRouter]);
 app.use(express.json());
 
 app.use((req, res, next) => {

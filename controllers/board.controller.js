@@ -21,15 +21,19 @@ class BoardController{
     }
 
     // 초대기능
-//  invite = async (req, res, next) => {
-    //     try{
-    //         return res.status(code).json({ posts: result });
-    //      } catch (err) {
-    //         if (err.code) return res.status(err.code).json({ message: err.message });
-    //         console.error(err);
-    //         res.status(500).send('알 수 없는 에러가 발생');
-    //       }
-    // }
+    invite = async (req, res, next) => {
+            try{
+                const { UserId } = req.session.user;
+                const { email } = req.body
+                const { boardId } = req.params
+                await this.boardUserService.invite({userId:UserId, boardId, email })
+                return res.status(code).json({message});
+            } catch (err) {
+                if (err.code) return res.status(err.code).json({ message: err.message });
+                console.error(err);
+                res.status(500).send('알 수 없는 에러가 발생');
+            }
+        }
 
     // 보드 수정기능
     putBoard = async (req, res, next) => {
@@ -47,15 +51,15 @@ class BoardController{
         }
 
     // 보드 삭제기능
-// deleteBoard= async (req, res, next) => {
-    //     try{
-    //         return res.status(code).json({ posts: result });
-    //      } catch (err) {
-    //         if (err.code) return res.status(err.code).json({ message: err.message });
-    //         console.error(err);
-    //         res.status(500).send('알 수 없는 에러가 발생');
-    //       }
-    // }
+deleteBoard= async (req, res, next) => {
+        try{
+            return res.status(code).json({ posts: result });
+         } catch (err) {
+            if (err.code) return res.status(err.code).json({ message: err.message });
+            console.error(err);
+            res.status(500).send('알 수 없는 에러가 발생');
+          }
+    }
 }
 
 module.exports = BoardController
