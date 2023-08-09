@@ -3,7 +3,7 @@ const CommentsRepository = require("../repositories/comments.repository");
 class CommentsService {
   commentsRepository = new CommentsRepository();
 
-  createComments = async ({ cardId, comment }) => {
+  createComments = async ({ userId, cardId, comment }) => {
     if (!cardId) {
       throw new Error("cardId가 존재하지 않습니다.");
     }
@@ -11,7 +11,7 @@ class CommentsService {
       throw new Error("댓글 내용을 입력 해주세요.");
     }
 
-    const createCommentData = await this.commentsRepository.createComments(cardId, comment);
+    const createCommentData = await this.commentsRepository.createComments({ createUser: userId, cardId, content });
 
     if (!createCommentData) {
       throw new Error("댓글 등록이 실패했습니다.");
