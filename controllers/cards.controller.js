@@ -5,8 +5,9 @@ class CardController {
 
   createCard = async (req, res, next) => {
     try {
+      console.log(ColumnId)
       const { ColumnId } = req.params;
-      const { UserId } = res.locals.user;
+      const { UserId } = req.session.user;
       const { title, content, cardIndex, cardColor, endDate } = req.body;
 
       const createCardData = await this.cardService.createCard(
