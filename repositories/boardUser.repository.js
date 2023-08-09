@@ -8,8 +8,12 @@ class BoardUserRepository{
     }
 
     // 권한 확인용 인포 찾기기능
-    findOne = async ({userId, boardId}) =>{
-        return await BoardInfos.findOne({userId, boardId})
+    findOne = async (target) =>{
+        return await BoardInfos.findOne(target)
+    }
+
+    findAll = async () =>{
+        return await BoardInfos.findAll()
     }
 }
 

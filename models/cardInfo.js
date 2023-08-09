@@ -1,7 +1,7 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class BoardInfos extends Model {
+  class CardInfos extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -14,15 +14,14 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "userId",
       });
 
-      this.belongsTo(models.Boards, {
+      this.belongsTo(models.Cards, {
         // Boards 모델에게 N:1 관계 설정을 합니다.
-        sourceKey: "BoardId",
-        foreignKey: "boardId",
+        sourceKey: "CardId",
+        foreignKey: "cardId",
       });
-
     }
   }
-  BoardInfos.init(
+  CardInfos.init(
     {
       userId: {
         allowNull: false,
@@ -32,12 +31,12 @@ module.exports = (sequelize, DataTypes) => {
           key: "UserId",
         },
       },
-      boardId: {
+      cardId: {
         allowNull: false,
         type: DataTypes.INTEGER,
         references: {
-          model: "Boards",
-          key: "BoardId",
+          model: "Cards",
+          key: "CardId",
         },onDelete: 'CASCADE',
       },
       createdAt: {
@@ -53,8 +52,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "BoardInfos",
+      modelName: "CardInfos",
     }
   );
-  return BoardInfos;
+  return CardInfos;
 };

@@ -7,59 +7,55 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
-      },
-      boardInfoId: {
-        allowNull: false,
         type: Sequelize.INTEGER,
-        references:{
-
-          model:'BoardInfos',
-
-          key:'BoardInfoId',
-        },
-        onDelete: 'CASCADE',
       },
       columnId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references:{
-          model:'Columns',
-          key:'ColumnId',
+        references: {
+          model: "Columns",
+          key: "ColumnId",
+        },onDelete: 'CASCADE',
+      },
+      userId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Users",
+          key: "UserId",
         },
       },
       title: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       content: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
-      cardState: {
+      cardIndex: {
         allowNull: false,
-        unique: true ,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       cardColor: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       endDate: {
         type: Sequelize.DATE,
         allowNull: false,
-        defaultValue: new Date()
+        defaultValue: new Date(),
       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.fn("now")
+        defaultValue: Sequelize.fn("now"),
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.fn("now")
-      }
+        defaultValue: Sequelize.fn("now"),
+      },
     });
   },
   async down(queryInterface, Sequelize) {

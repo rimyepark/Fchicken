@@ -12,13 +12,13 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
 
       this.hasMany(models.BoardInfos, { // 1:N 관계 설정을 합니다.
-
         sourceKey: 'UserId', 
         foreignKey: 'userId', 
       });
-      this.hasMany(models.Boards, { // 1:N 관계 설정을 합니다.
+      
+      this.hasMany(models.Cards, { // 1:N 관계 설정을 합니다.
         sourceKey: 'UserId', 
-        foreignKey: 'userId', 
+        foreignKey: 'UserId', 
       });
     }
   }

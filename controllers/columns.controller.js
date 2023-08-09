@@ -15,40 +15,16 @@ class ColumnController {
       }
     }
     
-  
 
     createColumn = async (req, res, next) => {
       try {
-        const { userId,boardId, columnName,columnIndex } = req.body;
+        const { boardId, columnName,columnIndex } = req.body;
         const createColumnData = await this.columnService.createColumn( userId,boardId,columnName,columnIndex);
         res.status(201).json({ data: createColumnData });
       } catch (error) {
         res.status(500).json({ error: error.message });
       }
     }
-
-  getColumns = async (req, res, next) => {
-    try {
-      const Columns = await this.columnService.findAllColumn({
-        order: [["columnIndex", "ASC"]],
-      });
-
-      res.status(200).json({ data: Columns });
-    } catch (error) {
-      res.status(500).json({ error: error.message });
-    }
-  };
-
-  //userId,boardId
-  createColumn = async (req, res, next) => {
-    try {
-      const { userId, boardId, columnName, columnIndex } = req.body;
-      const createColumnData = await this.columnService.createColumn(columnName, columnIndex, userId, boardId);
-      res.status(201).json({ data: createColumnData });
-    } catch (error) {
-      res.status(500).json({ error: error.message });
-    }
-  };
 
   updateColumnName = async (req, res, next) => {
     const { ColumnId } = req.params;

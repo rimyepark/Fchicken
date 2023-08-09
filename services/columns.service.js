@@ -18,38 +18,22 @@ class ColumnService {
       });
     }
            
-    createColumn = async (userId,boardId, columnName,columnIndex) => {  
-      const CreateColumnData = await this.columnRepository.createColumn(columnName,columnIndex);
+    createColumn = async (boardId, columnName,columnIndex) => {  
+      const CreateColumnData = await this.columnRepository.createColumn(boardId, columnName,columnIndex);
       if (!CreateColumnData) throw new Error("칼럼을 찾을 수 없습니다.");
      
       return {
         ColumnId: CreateColumnData.ColumnId,
-        userId: CreateColumnData.userId,
         boardId: CreateColumnData.boardId,
           columnName: CreateColumnData.columnName,
           columnIndex: CreateColumnData.columnIndex,
       };
     }
-  
-    updateColumnName = async (columnName) => {
-      const findColumn = await this.columnRepository.findColumnById(ColumnId);
-      if (!findColumn) throw new Error("칼럼을 찾지 못하였습니다.");
-
-    return {
-      ColumnId: CreateColumnData.ColumnId,
-      columnName: CreateColumnData.columnName,
-      columnIndex: CreateColumnData.columnIndex,
-      userId: CreateColumnData.userId,
-      boardId: CreateColumnData.boardId,
-    };
-  };
 
   updateColumnName = async (columnName) => {
     const findColumn = await this.columnRepository.findColumnById(ColumnId);
     if (!findColumn) throw new Error("칼럼을 찾지 못하였습니다.");
-
     await this.columnRepository.updateColumn(columnName);
-
     const updateColumnName = await this.columnRepository.findColumnById(ColumnId);
     return {
       CcolumnName: updateColumnName.columnName,
