@@ -17,7 +17,6 @@ router.post("/signin", signInValidation, async (req, res) => {
       where: { email: email, password: passwordToCrypto },
       attributes: { exclude: ["password"] },
     });
-    console.log(req.session);
 
     if (!userValid) return res.status(412).json({ message: "아이디와 비밀번호가 일치하지 않습니다." });
     else req.session.user = userValid;
