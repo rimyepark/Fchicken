@@ -13,8 +13,8 @@ class ColumnRepository {
       return column;
     };
   //칼럼 생성 api userId,boardId,
-    createColumn = async (columnName,columnIndex) => {
-      const createColumn = await Columns.create({columnName,columnIndex });
+    createColumn = async (userId,boardId,columnName,columnIndex) => {
+      const createColumn = await Columns.create({userId,boardId,columnName,columnIndex });
       return createColumn;
     }
   // 칼럼 이름 수정 api

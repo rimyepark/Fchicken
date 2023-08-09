@@ -19,13 +19,15 @@ class ColumnService {
         }
       });
     }
-  //          userId: CreateColumnData.userId, boardId: CreateColumnData.boardId,
-    createColumn = async (columnName,columnIndex) => {  
+           
+    createColumn = async (userId,boardId, columnName,columnIndex) => {  
       const CreateColumnData = await this.columnRepository.createColumn(columnName,columnIndex);
       if (!CreateColumnData) throw new Error("칼럼을 찾을 수 없습니다.");
      
       return {
         ColumnId: CreateColumnData.ColumnId,
+        userId: CreateColumnData.userId,
+        boardId: CreateColumnData.boardId,
           columnName: CreateColumnData.columnName,
           columnIndex: CreateColumnData.columnIndex,
       };
