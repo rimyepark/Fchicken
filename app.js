@@ -36,7 +36,6 @@ app.use(
 );
 
 app.use("/api", [user, BoardRouter, ColumnsRouter, CardsRouter, CommentsRouter]);
-app.use(express.json());
 
 app.use((req, res, next) => {
   res.locals.user = req.session.user;
