@@ -24,6 +24,12 @@ module.exports = (sequelize, DataTypes) => {
   }
   BoardInfos.init(
     {
+      Id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER
+      },
       userId: {
         allowNull: false,
         type: DataTypes.INTEGER,

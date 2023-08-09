@@ -31,7 +31,7 @@ class BoardUserService{
         return { code:200, result:boardInfo }
     }
 
-    deleteBoard = async
+    // deleteBoard = async
 }
 
 module.exports = BoardUserService
