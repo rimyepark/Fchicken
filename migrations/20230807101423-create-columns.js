@@ -13,7 +13,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER,
         references:{
-          model:'BoardInfo',
+          model:'BoardInfos',
           key:'BoardInfoId',
         },
         onDelete: 'CASCADE',
@@ -22,7 +22,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      columnState: {
+      columnIndex: {
         allowNull: false,
         unique: true ,
         type: Sequelize.INTEGER

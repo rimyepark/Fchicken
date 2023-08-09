@@ -1,4 +1,4 @@
-const { Columns } = require('../models');
+const { Columns, sequelize } = require('../models');
 
 class ColumnRepository {
 
@@ -13,8 +13,8 @@ class ColumnRepository {
       return column;
     };
   //칼럼 생성 api userId,boardId,
-    createColumn = async (columnName,columnState) => {
-      const createColumn = await Columns.create({columnName,columnState });
+    createColumn = async (columnName,columnIndex) => {
+      const createColumn = await Columns.create({columnName,columnIndex });
       return createColumn;
     }
   // 칼럼 이름 수정 api
@@ -31,6 +31,28 @@ class ColumnRepository {
       const deleteColumnData = await Columns.destroy({ where: { ColumnId } });
       return deleteColumnData;
     };
+
+    swapColumns =  async (column1Id, column2Id) => {
+      const transaction = await sequelize.transaction();
+  
+      try {
+        const column1 = await Columns.findByPk(column1Id, { transaction });
+        const column2 = await Columns.findByPk(column2Id, { transaction });
+  
+        const tempcolumnIndex = column1.columnIndex;
+        column1.columnIndex = column2.columnIndex;
+        column2.columnIndex = tempcolumnIndex;
+  
+        await column1.save({ transaction });
+        await column2.save({ transaction });
+  
+        await transaction.commit();
+        return true;
+      } catch (error) {
+        await transaction.rollback();
+        throw error;
+      }
+    }
   }
 
   module.exports = ColumnRepository;

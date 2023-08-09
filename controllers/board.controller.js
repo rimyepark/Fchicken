@@ -1,16 +1,18 @@
 const BoardService = require('../services/board.service')
+const BoardUserService = require('../services/boardUser.service')
 
 class BoardController{
     boardService = new BoardService()
+    boardUserService = new BoardUserService()
 
+    // 보더 생성
     createBoard = async (req, res, next) => {
         try{
-            // const userId = req.session.user.userId;
             const { title, content, color } = req.body;
             const { UserId } = req.session.user;
-            console.log("유저아이디값 받아오는지 확인:",UserId)
-            const { code, result } = await this.boardService.createBoard({ userId:UserId, title, content, color })
-            return res.status(code).json({ board: result });
+            const { board, code, result } = await this.boardService.createBoard({ userId:UserId, title, content, color })
+            await this.boardUserService.create({ userId:UserId, boardId:board.BoardId})
+            return res.status(code).json({ message: result });
          } catch (err) {
             if (err.code) return res.status(err.code).json({ message: err.message });
             console.error(err);

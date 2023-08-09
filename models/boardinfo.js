@@ -1,7 +1,7 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class BoardInfo extends Model {
+  class BoardInfos extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -19,9 +19,25 @@ module.exports = (sequelize, DataTypes) => {
         sourceKey: "BoardId",
         foreignKey: "boardId",
       });
+
+      this.hasMany(models.Columns, {
+        sourceKey: 'BoardInfoId', 
+        foreignKey: 'boardInfoId', 
+      });
+
+      this.hasMany(models.Cards, {
+        sourceKey: 'BoardInfoId', 
+        foreignKey: 'boardInfoId', 
+      });
+
+      this.hasMany(models.Comments, {
+        sourceKey: 'BoardInfoId', 
+        foreignKey: 'boardInfoId', 
+      });
+
     }
   }
-  BoardInfo.init(
+  BoardInfos.init(
     {
       BoardInfoId: {
         allowNull: false,
@@ -58,8 +74,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "BoardInfo",
+      modelName: "BoardInfos",
     }
   );
-  return BoardInfo;
+  return BoardInfos;
 };

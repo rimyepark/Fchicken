@@ -8,9 +8,9 @@ class BoardService{
 
         if(!userId) throw { code:401, message:'생성자를 찾을 수 없습니다.' }
 
-        const result = await this.boardRepository.create({ userId, title, content, color })
+        const board = await this.boardRepository.create({ title, content, color })
 
-        return { code:200, result }
+        return { board, code:200, result:'보드생성에 성공하였습니다.' }
     }
 
 }

@@ -13,11 +13,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER,
         references:{
-          model:'BoardInfo',
+          model:'BoardInfos',
           key:'BoardInfoId',
         },
+        onDelete: 'CASCADE',
       },
-      onDelete: 'CASCADE',
       columnId: {
         allowNull: false,
         type: Sequelize.INTEGER,
@@ -25,7 +25,6 @@ module.exports = {
           model:'Columns',
           key:'ColumnId',
         },
-        onDelete: 'CASCADE',
       },
       title: {
         allowNull: false,

@@ -11,12 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.hasMany(models.Columns, {
-        sourceKey: 'BoardId', 
-        foreignKey: 'boardId', 
-      });
 
-      this.hasMany(models.BoardInfo, {
+      this.hasMany(models.BoardInfos, {
         sourceKey: 'BoardId', 
         foreignKey: 'boardId', 
       });
