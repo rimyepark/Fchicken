@@ -19,7 +19,7 @@ class ColumnController {
     createColumn = async (req, res, next) => {
       try {
         const { boardId, columnName,columnIndex } = req.body;
-        const createColumnData = await this.columnService.createColumn( userId,boardId,columnName,columnIndex);
+        const createColumnData = await this.columnService.createColumn(boardId,columnName,columnIndex);
         res.status(201).json({ data: createColumnData });
       } catch (error) {
         res.status(500).json({ error: error.message });
