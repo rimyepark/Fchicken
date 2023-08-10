@@ -1,9 +1,9 @@
-const BoardUserRepository = require('../repositories/boardUser.repository')
-const BoardRepository = require('../repositories/board.repository')
+const BoardUserRepository = require("../repositories/boardUser.repository");
+const BoardRepository = require("../repositories/board.repository");
 
-class BoardUserService{
-    boardUserRepository = new BoardUserRepository()
-    boardRepository = new BoardRepository()
+class BoardUserService {
+  boardUserRepository = new BoardUserRepository();
+  boardRepository = new BoardRepository();
 
   create = async ({ userId, boardId }) => {
     if (!userId) throw { code: 401, message: "생성자를 찾을 수 없습니다." };
@@ -33,7 +33,7 @@ class BoardUserService{
     return { code: 200, result: boardInfo };
   };
 
-    deleteBoard = async
+  // deleteBoard = async
 }
 
 module.exports = BoardUserService;
