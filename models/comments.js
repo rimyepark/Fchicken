@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model, INTEGER
-} = require('sequelize');
+"use strict";
+const { Model, INTEGER } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Comments extends Model {
     /**
@@ -12,56 +10,53 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
 
-      this.belongsTo(models.Cards, { //  1:N 관계 설정을 합니다.
-        targetKey: 'CardId', 
-        foreignKey: 'cardId', 
+      this.belongsTo(models.Cards, {
+        //  1:N 관계 설정을 합니다.
+        targetKey: "CardId",
+        foreignKey: "cardId",
       });
     }
   }
-  Comments.init({
-    CommentId: {
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true,
-      type: DataTypes.INTEGER
-    },
-    cardId: {
-      allowNull: false,
-      type: DataTypes.INTEGER,
-      references:{
-        model:'Cards',
-        key:'CardId',
-      },onDelete: 'CASCADE',
-    },
-    userId: {
-      allowNull: false,
-      type: DataTypes.INTEGER,
-      references:{
-        model:'CardInfos',
-        key:'userId',
+  Comments.init(
+    {
+      CommentId: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER,
+      },
+      cardId: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+        references: {
+          model: "Cards",
+          key: "CardId",
+        },
+        onDelete: "CASCADE",
+      },
+      createUser: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+      },
+      content: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
+      createdAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
+      },
+      updatedAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
       },
     },
-    createUser:{
-      allowNull: false,
-      type: DataTypes.INTEGER,
-    },
-    content: {
-      allowNull: false,
-      type: DataTypes.STRING
-    },
-    createdAt: {
-      allowNull: false,
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW,
-    },
-    updatedAt: {
-      allowNull: false,
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW,
+    {
+      sequelize,
+      modelName: "Comments",
     }
-  }, {
-    sequelize,
-    modelName: 'Comments',
-  });
+  );
   return Comments;
 };

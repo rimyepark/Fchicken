@@ -1,31 +1,20 @@
-const CardService = require('../services/cards.service');
+const CardService = require("../services/cards.service");
 
 class CardController {
   cardService = new CardService();
 
   createCard = async (req, res, next) => {
     try {
-      console.log(ColumnId)
       const { ColumnId } = req.params;
       const { UserId } = req.session.user;
       const { title, content, cardIndex, cardColor, endDate } = req.body;
 
-      const createCardData = await this.cardService.createCard(
-        ColumnId,
-        UserId,
-        title,
-        content,
-        cardIndex,
-        cardColor,
-        endDate
-      );
+      const createCardData = await this.cardService.createCard(ColumnId, UserId, title, content, cardIndex, cardColor, endDate);
 
       return res.status(201).json({ data: createCardData });
     } catch (error) {
       console.error(error);
-      return res
-        .status(500)
-        .json({ errorMessage: '카드 생성에 실패하였습니다.' });
+      return res.status(500).json({ errorMessage: "카드 생성에 실패하였습니다." });
     }
   };
 
@@ -38,9 +27,7 @@ class CardController {
       return res.status(200).json({ data: findOneCardData });
     } catch (error) {
       console.error(error);
-      return res
-        .status(500)
-        .json({ errorMessage: '카드 상세 조회에 실패하였습니다.' });
+      return res.status(500).json({ errorMessage: "카드 상세 조회에 실패하였습니다." });
     }
   };
 
@@ -50,12 +37,10 @@ class CardController {
 
       await this.cardService.deleteCard(CardId);
 
-      return res.status(200).json({ message: '카드를 삭제하였습니다.' });
+      return res.status(200).json({ message: "카드를 삭제하였습니다." });
     } catch (error) {
       console.error(error);
-      return res
-        .status(500)
-        .json({ errorMessage: '카드 삭제에 실패하였습니다.' });
+      return res.status(500).json({ errorMessage: "카드 삭제에 실패하였습니다." });
     }
   };
 
@@ -64,22 +49,29 @@ class CardController {
       const { CardId } = req.params;
       const { title, content, cardColor, endDate } = req.body;
 
-      await this.cardService.updateCard(
-        CardId,
-        title,
-        content,
-        cardColor,
-        endDate
-      );
+      await this.cardService.updateCard(CardId, title, content, cardColor, endDate);
 
-      return res.status(200).json({ message: '카드를 수정하였습니다.' });
+      return res.status(200).json({ message: "카드를 수정하였습니다." });
     } catch (error) {
       console.error(error);
-      return res
-        .status(500)
-        .json({ errorMessage: '카드 수정에 실패하였습니다.' });
+      return res.status(500).json({ errorMessage: "카드 수정에 실패하였습니다." });
     }
   };
+
+  updateCardIndex = async (req, res) => {
+    const { cardId1, cardId2 } = req.body;
+  
+    if (!cardId1 || !cardId2) {
+      return res.status(400).json({ errorMessage: '??' });
+    }
+  
+    try {
+      await this.cardService.updateCardIndex(cardId1, cardId2);
+      return res.status(200).json({ message: '카드 위치를 이동하였습니다.' });
+    } catch (error) {
+      return res.status(500).json({ errorMesssage: '카드 이동에 실패하였습니다.' });
+    }
+  }
 }
 
 module.exports = CardController;

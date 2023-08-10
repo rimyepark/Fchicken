@@ -87,7 +87,8 @@ class BoardController {
       const { boardId } = req.params;
       const { UserId } = req.session.user;
       const { code, message } = await this.boardService.deleteBoard({
-        userId: UserId, boardId,
+        userId: UserId,
+        boardId,
       });
       return res.status(code).json({ message });
     } catch (err) {

@@ -1,21 +1,30 @@
-const { Comments, sequelize } = require("../models");
+const { Comments } = require("../models");
+const { Op } = require("sequelize");
 
 class CommentsRepository {
-  createComments = async (cardId, comment) => {
-    const newComment = new Comment({ cardId, comment });
-    return await newComment.save();
+  //댓글 등록
+  createComments = async ({ createUser, cardId, content }) => {
+    const createdComment = await Comments.create({ createUser, cardId, content });
+    return createdComment;
+  };
+  // 댓글 조회
+  findAllComments = async (cardId) => {
+    const result = await Comments.findAll({ attributes: ["content", "createUser"] }, { where: { cardId } });
+
+    return result;
+  };
+  //댓글 수정
+  update = async (data, target) => {
+    return await Comments.update(data, { where: { [Op.and]: target } });
   };
 
-  findAllComments = async () => {
-    return await Comments.find();
+  saveComment = async (comment) => {
+    return await comment.save();
   };
 
-  updateComment = async (cardId, commentId, comment) => {
-    return await Comments.findOneAndUpdate({ _id: commentId, cardId: cardId }, { comment }, { new: true });
-  };
-
-  deleteComment = async (cardId, commentId) => {
-    return await Comments.findOneAndDelete({ _id: commentId, cardId: cardId });
+  //댓글 삭제
+  delete = async (target) => {
+    return await Comments.destroy({ where: { [Op.and]: target } });
   };
 }
 

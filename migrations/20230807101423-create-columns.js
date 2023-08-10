@@ -23,7 +23,6 @@ module.exports = {
       },
       columnIndex: {
         allowNull: false,
-        unique: true,
         type: Sequelize.INTEGER
       },
       createdAt: {
