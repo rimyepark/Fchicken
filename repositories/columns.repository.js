@@ -17,7 +17,7 @@ class ColumnRepository {
       return createColumn;
     }
   // 칼럼 이름 수정 api
-  updateColumnName = async (ColumnId, columnName) => {
+  updateColumnName = async (ColumnId,columnName) => {
     const updateColumnData = await Columns.update({ columnName }, { where: { ColumnId } });
     return updateColumnData;
   };
