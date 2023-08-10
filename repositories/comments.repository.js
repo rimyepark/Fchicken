@@ -1,13 +1,13 @@
-const { Comments, sequelize } = require("../models");
+const { Comments } = require("../models");
 
 class CommentsRepository {
-  createComments = async (cardId, comment) => {
-    const newComment = new Comment({ cardId, comment });
-    return await newComment.save();
+  createComments = async ({ createUser, cardId, content }) => {
+    const createdComment = await Comments.create({ createUser, cardId, content });
+    return createdComment;
   };
 
   findAllComments = async () => {
-    return await Comments.find();
+    return await Comments.findAll();
   };
 
   updateComment = async (cardId, commentId, comment) => {

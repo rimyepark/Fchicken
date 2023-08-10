@@ -1,4 +1,4 @@
-const CommentsService = require("../services/columns.service");
+const CommentsService = require("../services/comments.service");
 
 class CommentsController {
   commentsService = new CommentsService();
@@ -8,15 +8,18 @@ class CommentsController {
     try {
       const { UserId } = req.session.user;
       const { cardId } = req.params;
-      const { comment } = req.body;
-      const createCommentData = await this.commentsService.createComments({
+      const { content } = req.body;
+      const { createCommentData, code, message } = await this.commentsService.createComments({
         userId: UserId,
         cardId,
-        comment,
+        content,
       });
-      res.status(200).json({ data: createCommentData });
-    } catch (error) {
-      res.status(500).json({ error: error.message });
+
+      return res.status(code).json({ message });
+    } catch (err) {
+      if (err.code) return res.status(err.code).json({ message: err.message });
+      console.error(err);
+      res.status(500).send("알 수 없는 에러 발생");
     }
   };
   // 댓글 조회
