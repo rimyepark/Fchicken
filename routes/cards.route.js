@@ -9,5 +9,6 @@ router.post("/columns/:ColumnId/cards", authMiddleware, cardController.createCar
 router.get("/cards/:CardId", cardController.findOneCard);
 router.delete("/cards/:CardId", cardController.deleteCard);
 router.put("/cards/:CardId", cardController.updateCard);
+router.put('/cardIndex', cardController.updateCardIndex);
 
 module.exports = router;
