@@ -3,71 +3,55 @@ const CommentsRepository = require("../repositories/comments.repository");
 class CommentsService {
   commentsRepository = new CommentsRepository();
 
-  createComments = async ({ cardId, comment }) => {
-    if (!cardId) {
-      throw new Error("cardId가 존재하지 않습니다.");
-    }
-    if (!comment) {
-      throw new Error("댓글 내용을 입력 해주세요.");
-    }
+  //댓글 생성
+  createComments = async ({ userId, cardId, content }) => {
+    if (!userId) throw { code: 401, message: "userId가 존재하지 않습니다." };
 
-    const createCommentData = await this.commentsRepository.createComments(cardId, comment);
+    if (!cardId) throw { code: 401, message: "cardId가 존재하지 않습니다." };
 
-    if (!createCommentData) {
-      throw new Error("댓글 등록이 실패했습니다.");
-    }
+    if (!content) throw { code: 401, message: "댓글 내용을 입력해주세요." };
 
-    return {
-      cardId: createCommentData.cardId,
-      comment: createCommentData.comment,
-    };
+    const createCommentData = await this.commentsRepository.createComments({
+      cardId,
+      content,
+      createUser: userId,
+    });
+
+    if (!createCommentData) throw { code: 401, message: "댓글 등록이 실패하였습니다. 않습니다." };
+
+    return { createCommentData, code: 200, message: "게시글 작성이 완료되었습니다." };
   };
 
-  findAllComments = async () => {
-    const allComments = await this.commentsRepository.findAllComments();
-    if (!Comments) {
-      res.status(400).json({ error: " 실패하였습니다." });
+  //댓글 조회
+  findAllComments = async (cardId) => {
+    if (!cardId) {
+      throw "실패하였습니다.";
     }
 
-    res.status(200).json({ data: Comments });
+    const comments = await this.commentsRepository.findAllComments(cardId);
+    return { comments, code: 200, message: "게시글 조회가 완료되었습니다." };
   };
 
-  updateComment = async ({ cardId, commentId, comment }) => {
-    if (!cardId) {
-      throw new Error("cardId가 존재하지 않습니다.");
-    }
-    if (!commentId) {
-      throw new Error("commentId가 존재하지 않습니다.");
-    }
-    if (!comment) {
-      throw new Error("댓글 내용을 입력 해주세요.");
-    }
+  //댓글 수정
+  updateComment = async ({ userId, commentId, content }) => {
+    if (!userId) throw { code: 401, message: "사용자를 찾을 수 없습니다." };
 
-    const updatedComment = await this.commentsRepository.updateComment(cardId, commentId, comment);
+    const updatedComment = await this.commentsRepository.update({ createUser: userId, commentId, content }, [{ commentId }]);
 
-    if (!updatedComment) {
-      throw new Error("댓글 수정이 실패했습니다.");
-    }
+    return { code: 200, message: "수정완료" };
 
     return updatedComment;
   };
+  //댓글삭제
+  deleteComment = async ({ userId, commentId }) => {
+    if (!userId) throw { code: 401, message: "사용자를 찾을 수 없습니다." };
 
-  deleteComment = async (cardId, commentId) => {
-    if (!cardId) {
-      throw new Error("cardId가 존재하지 않습니다.");
-    }
-    if (!commentId) {
-      throw new Error("commentId가 존재하지 않습니다.");
-    }
-
-    const deletedComment = await this.commentsRepository.deleteComment(cardId, commentId);
-
+    const deletedComment = await this.commentsRepository.delete({ createUser: userId, commentId }, [{ commentId }]);
     if (!deletedComment) {
-      throw new Error("댓글 삭제가 실패했습니다.");
+      throw { code: 400, message: "댓글 삭제가 실패했습니다." };
     }
-
-    return deletedComment;
+    return { code: 200, message: "삭제완료" };
   };
 }
 
-module.exports = ColumnService;
+module.exports = CommentsService;
