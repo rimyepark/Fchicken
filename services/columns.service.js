@@ -17,7 +17,6 @@ class ColumnService {
           updatedAt: Column.updatedAt,
         }
       });
-<<<<<<< HEAD
     }
            
     createColumn = async (boardId, columnName,columnIndex) => {  
@@ -32,21 +31,21 @@ class ColumnService {
       };
     }
 
-    updateColumnName = async ({ColumnId, columnName}) => {
-      const findColumn = await this.columnRepository.findColumnById(ColumnId); 
-      if (!findColumn) throw new Error("칼럼을 찾지 못하였습니다.");
-      await this.columnRepository.updateColumnName(ColumnId, columnName); 
-      const updatedColumn = await this.columnRepository.findColumnById(ColumnId);
-      return {
-        columnName: updatedColumn.columnName, 
-      };
+  updateColumnName = async (columnName) => {
+    const findColumn = await this.columnRepository.findColumnById(ColumnId);
+    if (!findColumn) throw new Error("칼럼을 찾지 못하였습니다.");
+    await this.columnRepository.updateColumn(columnName);
+    const updateColumnName = await this.columnRepository.findColumnById(ColumnId);
+    return {
+      CcolumnName: updateColumnName.columnName,
     };
+  };
 
   deleteColumn = async (ColumnId) => {
-    await this.columnRepository.findColumnById(ColumnId);
+    await this.columnRepository.findColumnCById(ColumnId);
     await this.columnRepository.deleteColumn(ColumnId);
 
-    return { code: 200, message: "삭제 완료" };
+    return true;
   };
 
   swapColumns = async (column1Id, column2Id) => {
@@ -54,9 +53,8 @@ class ColumnService {
       return await columnRepository.swapColumns(column1Id, column2Id);
     } catch (error) {
       throw error;
-=======
->>>>>>> c1c05f2a1798374d5e3614f57d5a82134a231c4f
     }
+  }
   //          userId: CreateColumnData.userId, boardId: CreateColumnData.boardId,
     createColumn = async (columnName,columnIndex) => {  
       const CreateColumnData = await this.columnRepository.createColumn(columnName,columnIndex);
