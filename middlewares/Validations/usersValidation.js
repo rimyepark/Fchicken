@@ -78,7 +78,6 @@ const userValidation = {
         .required()
         .disallow(Joi.ref("currentPassword"))
         .messages(user.editPassword),
-      editConfirmPassword: Joi.string().valid(Joi.ref("editPassword")).required().messages(user.editConfirmPassword),
     });
 
     try {

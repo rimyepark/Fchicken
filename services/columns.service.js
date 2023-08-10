@@ -3,7 +3,8 @@ const ColumnRepository = require("../repositories/columns.repository");
 class ColumnService {
   columnRepository = new ColumnRepository();
 
-  //userId: Column.userId,boardId: Column.boardId,
+    //userId: Column.userId,boardId: Column.boardId,
+  
 
     findAllColumn = async() => { 
       const allColumn = await this.columnRepository.findAllColumn();
@@ -30,21 +31,21 @@ class ColumnService {
       };
     }
 
-    updateColumnName = async ({ColumnId, columnName}) => {
-      const findColumn = await this.columnRepository.findColumnById(ColumnId); 
-      if (!findColumn) throw new Error("칼럼을 찾지 못하였습니다.");
-      await this.columnRepository.updateColumnName(ColumnId, columnName); 
-      const updatedColumn = await this.columnRepository.findColumnById(ColumnId);
-      return {
-        columnName: updatedColumn.columnName, 
-      };
+  updateColumnName = async (columnName) => {
+    const findColumn = await this.columnRepository.findColumnById(ColumnId);
+    if (!findColumn) throw new Error("칼럼을 찾지 못하였습니다.");
+    await this.columnRepository.updateColumn(columnName);
+    const updateColumnName = await this.columnRepository.findColumnById(ColumnId);
+    return {
+      CcolumnName: updateColumnName.columnName,
     };
+  };
 
   deleteColumn = async (ColumnId) => {
-    await this.columnRepository.findColumnById(ColumnId);
+    await this.columnRepository.findColumnCById(ColumnId);
     await this.columnRepository.deleteColumn(ColumnId);
 
-    return { code: 200, message: "삭제 완료" };
+    return true;
   };
 
   swapColumnIndexes = async (columnId1, columnId2)=> {
@@ -65,9 +66,10 @@ class ColumnService {
       throw error;
     }
   }
+  
+  }
+  
+  
+  
+  module.exports = ColumnService;
 
-
-}
-
-
-module.exports = ColumnService;

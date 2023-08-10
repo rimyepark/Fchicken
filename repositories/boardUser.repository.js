@@ -1,4 +1,6 @@
 const { BoardInfos } = require('../models')
+const { Op } = require('sequelize')
+const { Boards } = require('../models')
 
 
 class BoardUserRepository{
@@ -12,9 +14,20 @@ class BoardUserRepository{
         return await BoardInfos.findOne(target)
     }
 
-    findAll = async () =>{
-        return await BoardInfos.findAll()
+    findAll = async (target) =>{
+        return await BoardInfos.findAll({
+            where:target,
+            include: [
+                {
+                     model : Boards,
+                     attributes:['title','content','color']
+                },
+            ],
+            raw: true,
+            nest: true 
+        })
     }
+
 
 }
 
