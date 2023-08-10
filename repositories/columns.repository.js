@@ -1,4 +1,4 @@
-const { Columns, sequelize } = require("../models");
+const { Columns } = require("../models");
 
 class ColumnRepository {
 
@@ -32,27 +32,27 @@ class ColumnRepository {
       return deleteColumnData;
     };
 
-    swapColumns =  async (column1Id, column2Id) => {
-      const transaction = await sequelize.transaction();
-  
-      try {
-        const column1 = await Columns.findByPk(column1Id, { transaction });
-        const column2 = await Columns.findByPk(column2Id, { transaction });
-  
-        const tempcolumnIndex = column1.columnIndex;
-        column1.columnIndex = column2.columnIndex;
-        column2.columnIndex = tempcolumnIndex;
-  
-        await column1.save({ transaction });
-        await column2.save({ transaction });
-  
-        await transaction.commit();
-        return true;
-      } catch (error) {
-        await transaction.rollback();
-        throw error;
-      }
-    }
-  }
+  swapColumns = async (column1Id, column2Id) => {
+    const transaction = await sequelize.transaction();
 
-  module.exports = ColumnRepository;
+    try {
+      const column1 = await Columns.findByPk(column1Id, { transaction });
+      const column2 = await Columns.findByPk(column2Id, { transaction });
+
+      const tempcolumnIndex = column1.columnIndex;
+      column1.columnIndex = column2.columnIndex;
+      column2.columnIndex = tempcolumnIndex;
+
+      await column1.save({ transaction });
+      await column2.save({ transaction });
+
+      await transaction.commit();
+      return true;
+    } catch (error) {
+      await transaction.rollback();
+      throw error;
+    }
+  };
+}
+
+module.exports = ColumnRepository;

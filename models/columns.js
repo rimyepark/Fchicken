@@ -43,7 +43,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     columnIndex: {
       allowNull: false,
-      unique: true,
       type: DataTypes.INTEGER
     },
     createdAt: {
