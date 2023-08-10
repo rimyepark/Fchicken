@@ -5,6 +5,14 @@ class BoardService {
   boardRepository = new BoardRepository();
   boardUserRepository = new BoardUserRepository();
 
+  get = async ({UserId})=> {
+    const board = await this.boardUserRepository.findAll({userId:UserId})
+
+    if(!board) throw { code:401, message: "보드를 찾을 수 없습니다." }
+  
+    return {board}
+  }
+
   createBoard = async ({ userId, title, content, color }) => {
     if (!title || !content || !color)
       throw { code: 401, message: "모두 기입해 주세요." };

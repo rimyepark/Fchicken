@@ -5,6 +5,19 @@ class BoardController {
   boardService = new BoardService();
   boardUserService = new BoardUserService();
 
+  // 보더 찾기
+  getBoard = async (req, res, next)=> {
+    try{
+    const { UserId } = req.session.user;
+    const board = await this.boardService.get({UserId})
+    return  res.status(200).json({board:board})
+  } catch (err) {
+    if (err.code) return res.status(err.code).json({ message: err.message });
+    console.error(err);
+    res.status(500).send("알 수 없는 에러가 발생");
+  }
+  }
+
   // 보더 생성
   createBoard = async (req, res, next) => {
     try {
