@@ -47,13 +47,27 @@ class ColumnService {
     return { code: 200, message: "삭제 완료" };
   };
 
-  swapColumns = async (column1Id, column2Id) => {
+  swapColumnIndexes = async (columnId1, columnId2)=> {
     try {
-      return await columnRepository.swapColumns(column1Id, column2Id);
+      const column1 = await this.columnRepository.findColumnById(columnId1);
+      const column2 = await this.columnRepository.findColumnById(columnId2);
+  
+      const tempIndex = column1.columnIndex;
+      column1.columnIndex = column2.columnIndex;
+      column2.columnIndex = tempIndex;
+  
+      await this.columnRepository.updateColumn(column1);
+      await this.columnRepository.updateColumn(column2);
+  
+      console.log('Column indexes swapped successfully.');
     } catch (error) {
+      console.error('Error swapping column indexes:', error);
       throw error;
     }
-  };
+  }
+
+
 }
+
 
 module.exports = ColumnService;
