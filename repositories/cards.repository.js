@@ -11,7 +11,7 @@ class CardRepository {
     endDate
   ) => {
     const createCardData = await Cards.create({
-      ColumnId,
+      columnId: ColumnId,
       UserId,
       title,
       content,

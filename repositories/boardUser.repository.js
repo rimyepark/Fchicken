@@ -15,6 +15,7 @@ class BoardUserRepository{
     findAll = async () =>{
         return await BoardInfos.findAll()
     }
+
 }
 
 module.exports = BoardUserRepository
