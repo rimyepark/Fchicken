@@ -2,8 +2,7 @@ require("dotenv").config();
 const crypto = require("crypto");
 const { SECRET_KEY } = process.env;
 const UserRepository = require("../repositories/user.repository");
-const { signInValidation, signUpValidation } = require("../middlewares/Validations/usersValidation");
-
+const { signInValidation, signUpValidation, editPasswordValidation } = require("../middlewares/Validations/usersValidation");
 class UserService {
   userRepository = new UserRepository();
 
@@ -18,21 +17,22 @@ class UserService {
     return this.userRepository.createUser({ email, name, passwordToCrypto });
   };
 
-  getUserByUserId = async ({ userId }) => {
-    return await this.userRepository.getUserByUserId({ userId });
+  getUserByUserId = async ({ UserId }) => {
+    return await this.userRepository.getUserByUserId({ UserId });
   };
-  async editPassword(userId, currentPassword, editPassword) {
+
+  editPassword = async ({ UserId, currentPassword, editPassword }) => {
     const currentPasswordToCrypto = crypto.pbkdf2Sync(currentPassword, SECRET_KEY.toString("hex"), 11524, 64, "sha512").toString("hex");
     const editPasswordToCrypto = crypto.pbkdf2Sync(editPassword, SECRET_KEY.toString("hex"), 11524, 64, "sha512").toString("hex");
 
-    const currentPasswordValidation = await this.userRepository.findByUserIdAndPassword(userId, currentPasswordToCrypto);
+    const currentPasswordValidation = await this.userRepository.getUserByUserId({ UserId, currentPasswordToCrypto });
 
     if (!currentPasswordValidation) {
       throw new Error("현재 비밀번호가 일치하지 않습니다.");
     }
 
-    await this.userRepository.updatePassword(userId, editPasswordToCrypto);
-  }
+   return await this.userRepository.updatePassword({ UserId: UserId }, { editPasswordToCrypto });
+  };
 }
 
 module.exports = UserService;
