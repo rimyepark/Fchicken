@@ -57,6 +57,21 @@ class CardController {
       return res.status(500).json({ errorMessage: "카드 수정에 실패하였습니다." });
     }
   };
+
+  updateCardIndex = async (req, res) => {
+    const { cardId1, cardId2 } = req.body;
+  
+    if (!cardId1 || !cardId2) {
+      return res.status(400).json({ errorMessage: '??' });
+    }
+  
+    try {
+      await this.cardService.updateCardIndex(cardId1, cardId2);
+      return res.status(200).json({ message: '카드 위치를 이동하였습니다.' });
+    } catch (error) {
+      return res.status(500).json({ errorMesssage: '카드 이동에 실패하였습니다.' });
+    }
+  }
 }
 
 module.exports = CardController;
