@@ -28,7 +28,7 @@ class ColumnRepository {
     return deleteColumnData;
   };
 
-  
+  //칼럼 스왑 api
 updateColumn(column) {
   return column.save();
 }
