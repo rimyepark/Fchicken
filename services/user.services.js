@@ -18,20 +18,20 @@ class UserService {
   };
 
   getUserByUserId = async ({ UserId }) => {
-    return await this.userRepository.getUserByUserId({ UserId });
+    return await this.userRepository.getUser({ UserId });
   };
 
-  editPassword = async ({ UserId, currentPassword, editPassword }) => {
+  editPassword = async ({ UserId, currentPassword, editPassword  }) => {
     const currentPasswordToCrypto = crypto.pbkdf2Sync(currentPassword, SECRET_KEY.toString("hex"), 11524, 64, "sha512").toString("hex");
     const editPasswordToCrypto = crypto.pbkdf2Sync(editPassword, SECRET_KEY.toString("hex"), 11524, 64, "sha512").toString("hex");
 
-    const currentPasswordValidation = await this.userRepository.getUserByUserId({ UserId, currentPasswordToCrypto });
+    const currentPasswordValidation = await this.userRepository.getUser({ UserId, currentPasswordToCrypto });
 
     if (!currentPasswordValidation) {
       throw new Error("현재 비밀번호가 일치하지 않습니다.");
     }
 
-   return await this.userRepository.updatePassword({ UserId: UserId }, { editPasswordToCrypto });
+   return await this.userRepository.updatePassword({ UserId: UserId }, { password:editPasswordToCrypto });
   };
 }
 

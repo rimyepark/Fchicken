@@ -13,12 +13,15 @@ class UserRepository {
     return await Users.create({ email, name, password: passwordToCrypto, isEmailValid: false });
   };
 
-  getUserByUserId = async (taget) => {
-    return await Users.findOne(taget);
+  getUser = async (target) => {
+    return await Users.findOne(target);
   };
 
-  updatePassword = async (taget, { editPassword }) => {
-    return await Users.update({ password: editPassword }, { where: { [Op.and]: taget } });
+  updatePassword = async (target,data) => {
+    
+    console.log(target)
+    console.log(data)
+    return await Users.update(data, { where: { [Op.and]: target } });
   };
 }
 
