@@ -48,6 +48,22 @@ class CardService {
 
     return updateCardData;
   };
+
+  updateCardIndex = async (cardId1, cardId2) => {
+    try {
+      const card1 = await this.cardsRepository.findCardById(cardId1);
+      const card2 = await this.cardsRepository.findCardById(cardId2);
+
+      const tempIndex = card1.cardIndex;
+      card1.cardIndex = card2.cardIndex;
+      card2.cardIndex = tempIndex;
+
+      await this.cardsRepository.updateColumn(card1);
+      await this.cardsRepository.updateColumn(card2);
+    } catch (error) {
+      throw error;
+    }
+  };
 }
 
 module.exports = CardService;

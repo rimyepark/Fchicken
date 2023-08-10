@@ -43,6 +43,15 @@ class CardRepository {
 
     return updateCardData;
   };
+
+  findCardById = async (CardId) => {
+    const card = await Cards.findByPk(CardId);
+    return card;
+  };
+
+  updateColumn(card) {
+    return card.save();
+  }
 }
 
 module.exports = CardRepository;
