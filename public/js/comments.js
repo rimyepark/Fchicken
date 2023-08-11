@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const createComment = async (content) => {
     const cardId = 1; // 카드 ID를 수정하거나 동적으로 설정하세요.
-    const response = await fetch(`/cards/${cardId}/comments`, {
+    const response = await fetch(`/api/cards/${cardId}/comments`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ content }),
