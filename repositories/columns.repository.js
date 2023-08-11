@@ -3,9 +3,10 @@ const { Columns } = require("../models");
 class ColumnRepository {
   //칼럼 전체 조회 api
   findAllColumn = async () => {
-    const columns = await Columns.findAll();
-    return columns;
+    const Column = await Columns.findAll();
+    return Column;
   };
+
   //칼럼 조회 api
   findColumnById = async (ColumnId) => {
     const column = await Columns.findByPk(ColumnId);
