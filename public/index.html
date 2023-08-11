@@ -5,19 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /*CSS 스타일 코드를 추가합니다 */
+        body {
+            background-color: #F6F8A9;
+            margin: 0;
+            padding: 0;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 네비게이션 바 스타일 */
+        .navbar {
+            background-color: #F6F8A9;
+            padding: 20px;
+        }
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+            color: black;
+        }
+        .navbar-toggler-icon {
+            background-color: black;
+        }
+        .navbar-nav .nav-item .nav-link {
+            color: black;
+            font-weight: bold;
+        }
+
+        /* 커스텀 컨테이너 스타일 */
+        .custom-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
     </style>
     <title>오골계</title>
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="#">로고</a>
+            <!-- navbar-brand를 div.container 밖으로 이동 -->
+            <a class="navbar-brand">
+                <!-- 로고 이미지 크기를 수정하세요. -->
+                <img src="./img/logo.png" alt="" width="130px" height="120px">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto"> 
                     <li class="nav-item">
                         <a class="nav-link" href="./user.html">마이 페이지</a>
                     </li>
@@ -33,7 +72,6 @@
     </nav>
 
     <!-- 회원가입 폼 -->
-  
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

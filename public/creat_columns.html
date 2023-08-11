@@ -1,60 +1,61 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Column Creator</title>
-<style>
-  body {
-    background-color: #F6F8A9;
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    margin: 0;
-  }
-  .container {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  .column-name, .column-number {
-    margin-bottom: 10px;
-  }
-  .create-button {
-    background-color: #E8CDCD;
-    color: black;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  .create-button:hover {
-    background-color: #FFF1F1; /* 더 연한 보라색으로 변경 */
-  }
-</style>
-<script>
-    function openPopup(url, width, height) {
-     let left = (window.screen.width - width) / 2;
-     let top = (window.screen.height - height) / 2;
-     let options = 'resizable=yes, width=' + width + ', height=' + height + ', top=' + top + ', left=' + left;
-     window.open(url, '_blank', options);
- }
-</script>
-</head>
-<body>
-  <div class="container">
-    <h1>Column Creator</h1>
-    <input type="number" class="boardId" name="boardId" id="boardId" placeholder="boardId">
-    <input type="text" class="columnName" name="columnName" id="columnName" placeholder="Column Name">
-    <input type="number" class="columnIndex" name="columnIndex" id="columnIndex" placeholder="Column Number">
-    <button type="button" class="create-button" id="CreateColumn" >Create Column</button>
-  </div>
-  <script src="./js/creat_columns.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Column Creator</title>
+    <style>
+      body {
+        background-color: #f6f8a9;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        margin: 0;
+      }
+      .container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+      .column-name,
+      .column-number {
+        margin-bottom: 10px;
+      }
+      .create-button {
+        background-color: #e8cdcd;
+        color: black;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      .create-button:hover {
+        background-color: #fff1f1; /* 더 연한 보라색으로 변경 */
+      }
+    </style>
+    <script>
+      function openPopup(url, width, height) {
+        let left = (window.screen.width - width) / 2;
+        let top = (window.screen.height - height) / 2;
+        let options = "resizable=yes, width=" + width + ", height=" + height + ", top=" + top + ", left=" + left;
+        window.open(url, "_blank", options);
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Column Creator</h1>
+      <input type="number" class="boardId" name="boardId" id="boardId" placeholder="boardId" />
+      <input type="text" class="columnName" name="columnName" id="columnName" placeholder="Column Name" />
+      <input type="number" class="columnIndex" name="columnIndex" id="columnIndex" placeholder="Column Number" />
+      <button type="button" class="create-button" id="CreateColumn">Create Column</button>
+    </div>
+    <script src="./js/creat_columns.js"></script>
+  </body>
 </html>
