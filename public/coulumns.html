@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kanban Board</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+    .board {
+      width: 100%;
+      max-width: 1300px;
+      height: 650px;
+      display: flex;
+      background-color: #F6F8A9;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+      position: relative;
+      padding: 20px;
+      overflow-x: auto;
+    }
+    .auth-icons {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 10px;
+      background-color: #E8CDCD;
+      box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      min-width: 90px;
+      margin-right: 20px;
+    }
+    .column-container {
+      display: flex;
+      flex-direction: row;
+      overflow-x: auto;
+    }
+    .column {
+      display: flex;
+      flex-direction: column;
+      min-width: 200px;
+      padding: 10px;
+      background-color: #f9f9f9;
+      box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      margin-right: 20px;
+      margin-top: 200px;
+    }
+    .card {
+      margin: 10px 0;
+      padding: 10px;
+      background-color: #fff;
+      box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+    }
+    .add-column-btn {
+      min-width: 200px;
+      height: 50px;
+      padding: 5px 10px;
+      background-color: #f9f9f9;
+      box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
+      color: black;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 200px;
+    }
+    .add-card-btn {
+      align-self: flex-end;
+      margin-top: 10px;
+      padding: 5px 10px;
+      background-color: #2196f3;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .action-btn {
+      background-color: #E8CDCD;
+      color: white;
+      box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
+      border: none;
+      padding: 5px 10px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="board">
+    <div class="auth-icons">
+      <button class="action-btn">Login</button>
+      <button class="action-btn">Sign Up</button>
+    </div>
+    <div class="menu">
+      <a href="#">Home</a>
+      <a href="#">Settings</a>
+      <a href="#">Help</a>
+    </div>
+    <div class="column-container">
+      <div class="column">
+        <h2>Column 1</h2>
+        <button class="add-card-btn">Add Card</button>
+        <div class="card">Card 1</div>
+        <div class="card">Card 2</div>
+      </div>
+      <div class="column">
+        <h2>Column 2</h2>
+        <button class="add-card-btn">Add Card</button>
+        <div class="card">Card 3</div>
+        <div class="card">Card 4</div>
+      </div>
+      <div class="column">
+        <h2>Column 3</h2>
+        <button class="add-card-btn">Add Card</button>
+        <div class="card">Card 5</div>
+        <div class="card">Card 6</div>
+      </div>
+    </div>
+    <button class="add-column-btn">Add Column</button>
+  </div>
+</body>
+</html>

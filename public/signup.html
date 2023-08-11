@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+    <title>회원 가입</title>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h2>회원 가입</h2>
+      <form id="userForm">
+        <div class="mb-3">
+          <label for="email" class="form-label">이메일</label>
+          <input type="email" class="form-control" id="email" placeholder="이메일을 입력하세요" required />
+        </div>
+        <div class="mb-3">
+          <label for="name" class="form-label">이름</label>
+          <input type="text" class="form-control" id="name" placeholder="이름을 입력하세요" required />
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">비밀번호</label>
+          <input type="password" class="form-control" id="password" placeholder="비밀번호를 입력하세요" required />
+        </div>
+        <div class="mb-3">
+          <label for="confirmPassword" class="form-label">확인용 비밀번호</label>
+          <input type="password" class="form-control" id="confirmPassword" placeholder="확인용 비밀번호를 입력하세요" required />
+        </div>
+        <button type="submit" class="btn btn-primary" id="signupSubmitButton">가입하기</button>
+      </form>
+    </div>
+
+    <div class="modal fade" id="signupSuccessModal" tabindex="-1" aria-labelledby="signupSuccessModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="signupSuccessModalLabel">회원 가입 성공</h5>
+          </div>
+          <div class="modal-body">
+            <p>회원 가입이 성공적으로 완료되었습니다!</p>
+            <a href="./signIn.html" class="btn btn-primary">로그인 페이지로 이동</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- ... 이전의 HTML 코드 ... -->
+    <script src="./js/signup.js"></script>
+  </body>
+</html>
