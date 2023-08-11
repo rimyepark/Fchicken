@@ -32,7 +32,6 @@ class ColumnRepository {
 updateColumn(column) {
   return column.save();
 }
-
 }
 
 module.exports = ColumnRepository;
