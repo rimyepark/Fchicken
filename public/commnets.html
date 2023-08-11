@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet" />
+    <title>카드 제목이 들어갑니다</title>
+    <style>
+      * {
+        font-family: "Jua", sans-serif;
+      }
+
+      header {
+        margin: 100px 20px 0px 20px;
+        height: 120px;
+      }
+
+      .cardTitle {
+        font-size: 60px;
+        text-align: center;
+      }
+      .cardInfo {
+        font-size: 20px;
+        text-align: center;
+      }
+
+      body {
+        background-color: #f8f9fa;
+      }
+
+      .card {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .card-header {
+        background-color: #343a40;
+        color: white;
+        font-weight: bold;
+      }
+
+      .list-group-item {
+        border: none;
+      }
+
+      .card-body {
+        padding: 1rem;
+      }
+
+      #comment-form {
+        border: 1px solid rgba(0, 0, 0, 0.125);
+        border-radius: 1rem;
+        padding: 1rem;
+        background-color: #fdda6a;
+      }
+
+      #comment-input {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="cardTitle">카드 제목이 들어갑니다</div>
+      <div class="cardInfo">작성자 | 작성일자 | 수정 | 삭제</div>
+    </header>
+    <hr />
+    <main>카드 내용이 들어갑니다</main>
+    <footer>
+      <div class="container my-4">
+        <div class="row">
+          <div class="col">
+            <div class="card">
+              <ul class="list-group list-group-flush"></ul>
+              <div class="card-body">
+                <form id="comment-form">
+                  <div class="mb-3">
+                    <label for="comment-input" class="form-label">댓글</label>
+                    <input type="text" class="form-control" id="comment-input" placeholder="댓글을 입력해주세요" />
+                  </div>
+                  <button type="submit" class="btn btn-primary">댓글 추가</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./js/comments.js"></script>
+  </body>
+</html>
