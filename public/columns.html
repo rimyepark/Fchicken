@@ -49,6 +49,19 @@
       display: flex;
       flex-direction: row;
       overflow-x: auto;
+      -ms-overflow-style: none; /* 인터넷 익스플로러 */
+scrollbar-width: none; /* 파이어폭스 */
+    }
+
+    .column-container::-webkit-scrollbar {
+display: none; /* Chrome, Safari, Opera*/
+}
+
+    .Columns{
+      min-width: 1200px;
+      flex-direction: row;
+      float:left;
+    
     }
     .column {
       display: flex;
@@ -99,6 +112,15 @@
       border-radius: 10px;
       cursor: pointer;
     }
+
+    ul {
+list-style: none;
+}
+
+li {
+float:left;
+}
+
   </style>
      <script>   
       function openPopup(url, width, height) {

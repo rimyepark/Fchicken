@@ -21,4 +21,9 @@ router.get("/columns", (req, res) => {
   res.redirect("./columns.html");
 });
 
+router.post("/boards/:boardId/columns", (req, res) => {
+  res.redirect("./creat_columns.html");
+});
+
+
 module.exports = router;
