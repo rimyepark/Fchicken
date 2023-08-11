@@ -24,25 +24,13 @@ class BoardUserService {
     if (userId !== Number(info.userId))
       throw { code: 403, message: "보드접근 권한이 없습니다." };
 
-<<<<<<<<< Temporary merge branch 1
-    return { code: 200, result: "권한 확인용" };
 
-    // 유저아키텍쳐패턴 적용완료시 사용가능
-    // const user = await userRepository.findOne({email})
-    // if(!user) throw { code:401, message:'이메일을 확인해 주세요' }
-
-    const boardInfo = await this.boardUserRepository.invite({ userId: user.UserId, boardId });
-    return { code: 200, result: boardInfo };
-  };
-
-  // deleteBoard = async
-=========
         const boardInfo = await this.boardUserRepository.create({ userId:user.UserId, boardId })
         return { code:200, result:boardInfo }
     }
 
 
->>>>>>>>> Temporary merge branch 2
+
 }
 
 module.exports = BoardUserService;

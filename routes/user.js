@@ -9,10 +9,10 @@ const { off } = require("process");
 
 const UserController = require("../controllers/user.controller");
 const userController = new UserController();
-router.post("/signIn", userController.signIn);
-router.post("/signUp", userController.signUp);
+router.post("/signIn", signInValidation, userController.signIn);
+router.post("/signUp", signUpValidation, userController.signUp);
 router.get("/getUserByUserId", authMiddleware, userController.getUserByUserId);
-router.put("/editpassword", authMiddleware, userController.editPassword);
+router.put("/editpassword", authMiddleware, editPasswordValidation, userController.editPassword);
 
 router.get("/signout", (req, res) => {
   req.session.destroy((err) => {

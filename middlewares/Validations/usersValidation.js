@@ -23,12 +23,14 @@ const userValidation = {
     try {
       await schema.validateAsync(body);
     } catch (err) {
-      return res.status(412).json({ message: err.message });
+      return res.status(412).json({ errorMessage: err.message });
     }
 
     next();
   },
   signUpValidation: async (req, res, next) => {
+    console.log(req.body);
+
     const body = req.body;
     const schema = Joi.object().keys({
       email: Joi.string()
@@ -55,11 +57,11 @@ const userValidation = {
     try {
       await schema.validateAsync(body);
     } catch (err) {
-      return res.status(412).json({ message: err.message });
+      return res.status(412).json({ errorMessage: err.message });
     }
 
     next();
-  }, //currentPassword, editPassword, editConfirmPassword
+  }, 
   editPasswordValidation: async (req, res, next) => {
     const body = req.body;
     const schema = Joi.object().keys({
@@ -84,7 +86,7 @@ const userValidation = {
       await schema.validateAsync(body);
     } catch (err) {
       console.log(err);
-      return res.status(412).json({ message: err.message });
+      return res.status(412).json({ errorMessage: err.message });
     }
 
     next();

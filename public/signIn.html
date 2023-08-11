@@ -19,19 +19,19 @@
           <input type="password" class="form-control" id="password" placeholder="비밀번호를 입력하세요" required />
         </div>
 
-        <button type="submit" class="btn btn-primary" id="signupSubmitButton">로그인</button>
+        <button type="submit" class="btn btn-primary" id="signInSubmitButton">로그인</button>
       </form>
     </div>
 
-    <div class="modal fade" id="signupSuccessModal" tabindex="-1" aria-labelledby="signupSuccessModalLabel" aria-hidden="true">
+    <div class="modal fade" id="signInSuccessModal" tabindex="-1" aria-labelledby="signInSuccessModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="signupSuccessModalLabel">로그인 성공</h5>
+            <h5 class="modal-title" id="signInSuccessModalLabel">로그인 성공</h5>
           </div>
           <div class="modal-body">
             <p>로그인 완료되었습니다!</p>
-            <a href="/views/signin.html" class="btn btn-primary">메인 페이지로 이동</a>
+            <a href="./index.html" class="btn btn-primary">메인 페이지로 이동</a>
           </div>
         </div>
       </div>
@@ -39,15 +39,6 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script>
-      $(document).ready(function () {
-        $("#signupSubmitButton").click(function () {
-          $("#signupSuccessModal").modal("show");
-          setTimeout(function () {
-            window.location.href = "/views";
-          }, 2000);
-        });
-      });
-    </script>
+    <script src="./js/signIn.js"></script>
   </body>
 </html>

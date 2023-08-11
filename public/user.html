@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+    <title>마이페이지</title>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h2>비밀번호 변경</h2>
+      <form>
+        <div class="mb-3">
+          <label for="password" class="form-label">현재비밀번호</label>
+          <input type="password" class="form-control" id="password" placeholder="비밀번호를 입력하세요" required />
+        </div>
+        <div class="mb-3">
+          <label for="confirmPassword" class="form-label">바꿀 비밀번호</label>
+          <input type="password" class="form-control" id="confirmPassword" placeholder="확인용 비밀번호를 입력하세요" required />
+        </div>
+        <button type="submit" class="btn btn-primary" id="userSubmitButton">저장</button>
+      </form>
+    </div>
+
+    <div class="modal fade" id="userSuccessModal" tabindex="-1" aria-labelledby="userSuccessModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="userSuccessModalLabel">변경 완료</h5>
+          </div>
+          <div class="modal-body">
+            <p>비밀번호가 변경되셨습니다!</p>
+            <a href="./signIn.html" class="btn btn-primary">메인 페이지로 이동</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="./js/user.js"></script>
+  </body>
+</html>
