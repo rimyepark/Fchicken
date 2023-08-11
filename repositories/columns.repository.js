@@ -22,7 +22,6 @@ class ColumnRepository {
     return updateColumnData;
   };
   // 칼럼 삭제 api
-<<<<<<< HEAD
   deleteColumn = async (ColumnId) => {
     const deleteColumnData = await Columns.destroy({ where: { ColumnId } });
     return deleteColumnData;
@@ -36,16 +35,3 @@ updateColumn(column) {
 
 
 module.exports = ColumnRepository;
-=======
-    deleteColumn = async (ColumnId) => {
-      const deleteColumnData = await Columns.destroy({ where: { ColumnId } });
-      return deleteColumnData;
-    }; 
-    updateColumn(column) {
-  return column.save();
-  }
-
-}
-
-  module.exports = ColumnRepository;
->>>>>>> 52c3b28036a208bf9850d828f60d184ce7f93961

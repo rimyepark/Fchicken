@@ -47,7 +47,6 @@ class ColumnService {
     return true;
   };
 
-<<<<<<< HEAD
   updateColumnName = async (columnName) => {
     const findColumn = await this.columnRepository.findColumnById(ColumnId);
     if (!findColumn) throw new Error("칼럼을 찾지 못하였습니다.");
@@ -68,9 +67,6 @@ class ColumnService {
   };
 
   swapColumns = async (column1Id, column2Id) => {
-=======
-  swapColumnIndexes = async (columnId1, columnId2)=> {
->>>>>>> 52c3b28036a208bf9850d828f60d184ce7f93961
     try {
       const column1 = await this.columnRepository.findColumnById(columnId1);
       const column2 = await this.columnRepository.findColumnById(columnId2);
@@ -87,16 +83,7 @@ class ColumnService {
       console.error("Error swapping column indexes:", error);
       throw error;
     }
-  }
-<<<<<<< HEAD
+  };
 }
 
 module.exports = ColumnService;
-=======
-  
-  }
-  
-  
-  
-  module.exports = ColumnService;
->>>>>>> 52c3b28036a208bf9850d828f60d184ce7f93961
