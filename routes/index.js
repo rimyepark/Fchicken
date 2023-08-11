@@ -17,4 +17,7 @@ router.get("/editpassword", (req, res) => {
   res.redirect("./user.html");
 });
 
+router.get("/comments", (req, res) => {
+  res.redirect("./comments.html");
+});
 module.exports = router;
