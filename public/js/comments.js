@@ -28,12 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
   };
   const createComment = async (content) => {
     const cardId = 1;
-    const response = await fetch(`/api/cards/${cardId}/comments`, {
+    const response = await fetch(`api/cards/${cardId}/comments`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ content }),
     });
-
     if (!response.ok) {
       console.error(`Error: ${response.status} ${response.statusText}`);
       const responseText = await response.text(); // 서버 응답을 텍스트 형식으로 확인하십시오.

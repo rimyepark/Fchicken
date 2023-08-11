@@ -28,7 +28,6 @@ class CommentsController {
       const { cardId } = req.params;
 
       const { comments, code, message } = await this.commentsService.findAllComments({ cardId });
-      console.log(comments);
       return res.status(code).json({ message, data: comments });
     } catch (err) {
       if (err.code) return res.status(err.code).json({ message: err.message });
