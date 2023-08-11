@@ -48,13 +48,32 @@ class ColumnService {
     return true;
   };
 
+  updateColumnName = async (columnName) => {
+    const findColumn = await this.columnRepository.findColumnById(ColumnId);
+    if (!findColumn) throw new Error("칼럼을 찾지 못하였습니다.");
+
+    await this.columnRepository.updateColumn(columnName);
+
+    const updateColumnName = await this.columnRepository.findColumnById(ColumnId);
+    return {
+      CcolumnName: updateColumnName.columnName,
+    };
+  };
+
+  deleteColumn = async (ColumnId) => {
+    await this.columnRepository.findColumnCById(ColumnId);
+    await this.columnRepository.deleteColumn(ColumnId);
+
+    return true;
+  };
+
   swapColumns = async (column1Id, column2Id) => {
     try {
       return await columnRepository.swapColumns(column1Id, column2Id);
     } catch (error) {
       throw error;
     }
-  };
+  }
 }
 
 module.exports = ColumnService;
