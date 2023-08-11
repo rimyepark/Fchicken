@@ -23,14 +23,16 @@ class ColumnRepository {
     return updateColumnData;
   };
   // 칼럼 삭제 api
-    deleteColumn = async (ColumnId) => {
-      const deleteColumnData = await Columns.destroy({ where: { ColumnId } });
-      return deleteColumnData;
-    }; 
-    updateColumn(column) {
-  return column.save();
-  }
+  deleteColumn = async (ColumnId) => {
+    const deleteColumnData = await Columns.destroy({ where: { ColumnId } });
+    return deleteColumnData;
+  };
 
+  //칼럼 스왑 api
+updateColumn(column) {
+  return column.save();
+}
 }
 
-  module.exports = ColumnRepository;
+
+module.exports = ColumnRepository;

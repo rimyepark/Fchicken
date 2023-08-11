@@ -17,4 +17,8 @@ router.get("/editpassword", (req, res) => {
   res.redirect("./user.html");
 });
 
+router.get("/columns", (req, res) => {
+  res.redirect("./columns.html");
+});
+
 module.exports = router;
