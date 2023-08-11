@@ -23,7 +23,7 @@ async function signIn(event) {
 
     if (!data.errorMessage) {
       alert(data.message);
-      location.href = "/index.html"; // 페이지 리다이렉션
+      location.href = "/columns.html"; // 페이지 리다이렉션
     } else {
       alert(data.errorMessage);
     }
