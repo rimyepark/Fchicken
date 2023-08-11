@@ -1,27 +1,28 @@
-async function getUserByUserId(event) {
+async function editpassword(event) {
   event.preventDefault();
   try {
     const currentPassword = document.getElementById("currentPassword").value;
     const editPassword = document.getElementById("editPassword").value;
 
-    const passwordChangeData = {
+    const editpasswordData = {
       currentPassword,
       editPassword,
     };
 
-    const response = await fetch("/api/getUserByUserId", {
-      method: "POST",
+    const response = await fetch("/api/editpassword", {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(passwordChangeData),
+      body: JSON.stringify(editpasswordData),
     });
 
     const data = await response.json();
+    console.log("data", data);
 
     if (!data.errorMessage) {
       alert(data.message);
-      location.href = "/signIn.html";
+      window.location.href = "/signIn.html";
     } else {
       alert(data.errorMessage);
     }
@@ -30,5 +31,7 @@ async function getUserByUserId(event) {
   }
 }
 
-const changePasswordBtn = document.getElementById("userSubmitButton");
-changePasswordBtn.addEventListener("click", getUserByUserId);
+document.addEventListener("DOMContentLoaded", () => {
+  const changePasswordBtn = document.getElementById("userSubmitButton");
+  changePasswordBtn.addEventListener("click", editpassword);
+});

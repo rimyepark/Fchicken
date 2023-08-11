@@ -16,8 +16,8 @@ router.put("/editpassword", authMiddleware, editPasswordValidation, userControll
 
 router.get("/signout", (req, res) => {
   req.session.destroy((err) => {
-    if (err) return res.status(412).json({ message: "오류가 발생하였습니다." });
-    return res.status(201).redirect("../../");
+    if (err) return res.status(500).json({ message: "오류가 발생하였습니다." });
+    return res.redirect("../../");
   });
 });
 

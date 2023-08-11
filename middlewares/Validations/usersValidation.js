@@ -23,7 +23,7 @@ const userValidation = {
     try {
       await schema.validateAsync(body);
     } catch (err) {
-      return res.status(412).json({ errorMessage: err.message });
+      return res.status(400).json({ errorMessage: err.message });
     }
 
     next();
@@ -57,11 +57,11 @@ const userValidation = {
     try {
       await schema.validateAsync(body);
     } catch (err) {
-      return res.status(412).json({ errorMessage: err.message });
+      return res.status(400).json({ errorMessage: err.message });
     }
 
     next();
-  }, 
+  },
   editPasswordValidation: async (req, res, next) => {
     const body = req.body;
     const schema = Joi.object().keys({
@@ -86,7 +86,7 @@ const userValidation = {
       await schema.validateAsync(body);
     } catch (err) {
       console.log(err);
-      return res.status(412).json({ errorMessage: err.message });
+      return res.status(400).json({ errorMessage: err.message });
     }
 
     next();

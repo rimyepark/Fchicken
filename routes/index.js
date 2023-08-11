@@ -13,7 +13,7 @@ router.get("/signIn", (req, res) => {
   res.redirect("./signIn.html");
 });
 
-router.get("/getUserByUserId", (req, res) => {
+router.get("/editpassword", (req, res) => {
   res.redirect("./user.html");
 });
 
