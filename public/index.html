@@ -6,7 +6,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: rgb(243, 243, 166);
+            background-color: #F6F8A9;
             margin: 0;
             padding: 0;
         }
@@ -17,14 +17,13 @@
 
         /* 네비게이션 바 스타일 */
         .navbar {
-            background-color: rgb(243, 243, 166);
+            background-color: #F6F8A9;
             padding: 20px;
         }
         .navbar-brand {
             font-size: 24px;
             font-weight: bold;
             color: black;
-            order: -1000; /* 로고를 왼쪽에 위치시키기 위해 순서를 변경 */
         }
         .navbar-toggler-icon {
             background-color: black;
@@ -32,9 +31,6 @@
         .navbar-nav .nav-item .nav-link {
             color: black;
             font-weight: bold;
-        }
-        .collapse.navbar-collapse {
-            justify-content: flex-end; /* 나머지 메뉴를 오른쪽에 위치시키기 위해 justify-content 속성 추가 */
         }
 
         /* 커스텀 컨테이너 스타일 */
@@ -51,15 +47,16 @@
 <body>
     <nav class="navbar navbar-expand-lg">
         <div class="container">
+            <!-- navbar-brand를 div.container 밖으로 이동 -->
             <a class="navbar-brand">
-                <img src="./img/logo.png" alt="">
+                <!-- 로고 이미지 크기를 수정하세요. -->
+                <img src="./img/logo.png" alt="" width="130px" height="120px">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav ml-auto"> 
                     <li class="nav-item">
                         <a class="nav-link" href="./user.html">마이 페이지</a>
                     </li>
@@ -80,8 +77,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
-
-
 
 
 
