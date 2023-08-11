@@ -5,14 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <style>
+      body
         /*CSS 스타일 코드를 추가합니다 */
+        {
+        background-color: rgb(247, 255, 172);
+        *{ maring:0; padding:0;}
+      }
+      .custom-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 10rem;
+        margin-bottom: 10rem;
+      }
+      .container-fluid {
+        width: auto;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+      }
+      .bg-light {
+        background-color: transparent !important;
+      }
+      
+     
     </style>
     <title>오골계</title>
 </head>
-<body>
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="#">로고</a>
+            <a class="navbar-brand" img (src="./img/logo.png", alt="")>x</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
