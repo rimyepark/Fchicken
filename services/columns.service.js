@@ -3,8 +3,6 @@ const ColumnRepository = require("../repositories/columns.repository");
 class ColumnService {
   columnRepository = new ColumnRepository();
 
-  //userId: Column.userId,boardId: Column.boardId,
-
   findAllColumn = async () => {
     const allColumn = await this.columnRepository.findAllColumn();
     return allColumn.map((Column) => {
@@ -17,7 +15,7 @@ class ColumnService {
       };
     });
   };
-  //          userId: CreateColumnData.userId, boardId: CreateColumnData.boardId,
+ 
   createColumn = async (columnName, columnIndex) => {
     const CreateColumnData = await this.columnRepository.createColumn(columnName, columnIndex);
     if (!CreateColumnData) throw new Error("칼럼을 찾을 수 없습니다.");
@@ -48,24 +46,21 @@ class ColumnService {
     return true;
   };
 
-  swapColumnIndexes = async (columnId1, columnId2)=> {
+  swapColumns = async (req, res) => {
+    const { columnId1, columnId2 } = req.body;
+  
+    if (!columnId1 || !columnId2) {
+      return res.status(400).json({ message: 'Both columnId1 and columnId2 are required.' });
+    }
+  
     try {
-      const column1 = await this.columnRepository.findColumnById(columnId1);
-      const column2 = await this.columnRepository.findColumnById(columnId2);
-  
-      const tempIndex = column1.columnIndex;
-      column1.columnIndex = column2.columnIndex;
-      column2.columnIndex = tempIndex;
-  
-      await this.columnRepository.updateColumn(column1);
-      await this.columnRepository.updateColumn(column2);
-  
-      console.log('Column indexes swapped successfully.');
+      await this.columnService.swapColumnIndexes(columnId1, columnId2);
+      return res.status(200).json({ message: 'Column indexes swapped successfully.' });
     } catch (error) {
-      console.error('Error swapping column indexes:', error);
-      throw error;
+      return res.status(500).json({ message: 'Internal server error.' });
     }
   }
+
 }
 
 module.exports = ColumnService;
