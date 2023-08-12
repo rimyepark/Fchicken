@@ -24,12 +24,13 @@ class BoardUserService {
     if (userId !== Number(info.userId))
       throw { code: 403, message: "보드접근 권한이 없습니다." };
 
-    const boardInfo = await this.boardUserRepository.create({
-      userId: user.UserId,
-      boardId,
-    });
-    return { code: 200, result: boardInfo };
-  };
+
+        const boardInfo = await this.boardUserRepository.create({ userId:user.UserId, boardId })
+        return { code:200, result:boardInfo }
+    }
+
+
+
 }
 
 module.exports = BoardUserService;

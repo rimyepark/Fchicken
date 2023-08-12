@@ -5,7 +5,8 @@ const { Op } = require('sequelize')
 class BoardRepository{
     // 보드생성
     create = async ({ createUser, title, content, color })=>{
-        return await Boards.create({ createUser, title, content, color })
+        const NcreateUser = Number(createUser)
+        return await Boards.create({ title, content, createUser:NcreateUser, color })
     }
 
     // 보드수정

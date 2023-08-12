@@ -1,5 +1,5 @@
 const UserService = require("../services/user.services");
-
+const { signInValidation, signUpValidation, editPasswordValidation } = require("../middlewares/Validations/usersValidation");
 class UserController {
   userService = new UserService();
 

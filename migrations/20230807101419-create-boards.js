@@ -17,10 +17,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING,
       },
-      createUser: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-      },
+      // createUser: {
+      //   allowNull: false,
+      //   type: Sequelize.INTEGER,
+      // },
       color: {
         allowNull: false,
         type: Sequelize.STRING,

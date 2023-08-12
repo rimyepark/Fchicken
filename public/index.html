@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #F6F8A9;
+            margin: 0;
+            padding: 0;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 네비게이션 바 스타일 */
+        .navbar {
+            background-color: #F6F8A9;
+            padding: 20px;
+        }
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+            color: black;
+        }
+        .navbar-toggler-icon {
+            background-color: black;
+        }
+        .navbar-nav .nav-item .nav-link {
+            color: black;
+            font-weight: bold;
+        }
+
+        /* 커스텀 컨테이너 스타일 */
+        .custom-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+    </style>
+    <title>오골계</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <!-- navbar-brand를 div.container 밖으로 이동 -->
+            <a class="navbar-brand">
+                <!-- 로고 이미지 크기를 수정하세요. -->
+                <img src="./img/logo.png" alt="" width="130px" height="120px">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto"> 
+                    <li class="nav-item">
+                        <a class="nav-link" href="./user.html">마이 페이지</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./signup.html" id="signupButton">회원가입</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./signIn.html"id="signInButton">로그인</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 회원가입 폼 -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
+    <!-- 회원 가입 모달
+    <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="signupModalLabel">회원 가입</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="modal-body">
+                <form>
+                  <div class="mb-3">
+                    <label for="email" class="form-label">이메일</label>
+                    <input type="email" class="form-control" id="email" placeholder="이메일을 입력하세요" />
+                  </div>
+                  <div class="mb-3">
+                    <label for="name" class="form-label">이름</label>
+                    <input type="text" class="form-control" id="name" placeholder="이름을 입력하세요" />
+                  </div>
+                  <div class="mb-3">
+                    <label for="password" class="form-label">비밀번호</label>
+                    <input type="password" class="form-control" id="password" placeholder="비밀번호를 입력하세요" />
+                  </div>
+                  <div class="mb-3">
+                    <label for="confirmPassword" class="form-label">확인용 비밀번호</label>
+                    <input type="password" class="form-control" id="confirmPassword" placeholder="확인용 비밀번호를 입력하세요" />
+                  </div>
+                  <button type="submit" class="btn btn-primary" id="signupSubmitButton">가입하기</button>
+                </form>
+              </div>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html> 
+  </body>
+</html>

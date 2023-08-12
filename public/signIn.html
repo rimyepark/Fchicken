@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+      body {
+        background-color: #f6f8a9;
+        margin: 0;
+        padding: 0;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      /* 네비게이션 바 스타일 */
+      .navbar {
+        background-color: #f6f8a9;
+        padding: 20px;
+      }
+      .navbar-brand {
+        font-size: 24px;
+        font-weight: bold;
+        color: black;
+      }
+      .navbar-toggler-icon {
+        background-color: black;
+      }
+      .navbar-nav .nav-item .nav-link {
+        color: black;
+        font-weight: bold;
+      }
+
+      #signInSubmitButton {
+        background-color: #e9d0d0;
+        border-color: #3f3f3f;
+        width: 200px;
+        padding: 10px 20px;
+        border-radius: 50px;
+        font-size: 16px;
+      }
+
+      /* 커스텀 컨테이너 스타일 */
+      .custom-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+      }
+    </style>
+    <title>로그인</title>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <img src="./img/login.PNG" alt="" width="120px" height="120px" />
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-4">
+          <form>
+            <div class="mb-3">
+              <label for="email" class="form-label">이메일</label>
+              <input type="email" class="form-control" id="email" placeholder="이메일을 입력하세요" required />
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">비밀번호</label>
+              <input type="password" class="form-control" id="password" placeholder="비밀번호를 입력하세요" required />
+            </div>
+            <div class="row justify-content-center">
+              <button type="submit" class="btn btn-primary" id="signInSubmitButton">로그인</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="signInSuccessModal" tabindex="-1" aria-labelledby="signInSuccessModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="signInSuccessModalLabel">로그인 성공</h5>
+          </div>
+          <div class="modal-body">
+            <p>로그인 완료되었습니다!</p>
+            <a href="./columns.html" class="btn btn-primary">메인 페이지로 이동</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="./js/signIn.js"></script>
+  </body>
+</html>

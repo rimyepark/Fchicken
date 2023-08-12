@@ -17,10 +17,7 @@ class UserRepository {
     return await Users.findOne(target);
   };
 
-  updatePassword = async (target,data) => {
-    
-    console.log(target)
-    console.log(data)
+  updatePassword = async (target, data) => {
     return await Users.update(data, { where: { [Op.and]: target } });
   };
 }
