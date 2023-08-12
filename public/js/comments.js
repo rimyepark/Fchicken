@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const loadComments = async () => {
     const comments = await getComments();
-    commentList.innerHTML = comments.map((comment) => `<li class="list-group-item">${comment.content}</li>`).join("");
+    commentList.innerHTML = comments.map((comment) => `<li class="list-group-item">${comment.name}: ${comment.content}</li>`).join("");
   };
 
   const getComments = async () => {

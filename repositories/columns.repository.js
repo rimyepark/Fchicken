@@ -3,10 +3,9 @@ const { Columns } = require("../models");
 class ColumnRepository {
   //칼럼 전체 조회 api
   findAllColumn = async () => {
-    const Column = await Columns.findAll();
-    return Column;
+    const columns = await Columns.findAll();
+    return columns;
   };
-
   //칼럼 조회 api
   findColumnById = async (ColumnId) => {
     const column = await Columns.findByPk(ColumnId);
@@ -27,11 +26,6 @@ class ColumnRepository {
     const deleteColumnData = await Columns.destroy({ where: { ColumnId } });
     return deleteColumnData;
   };
-<<<<<<< HEAD
-=======
-
-  //칼럼 스왑 api
->>>>>>> 607a2e0b4f011465e55338bb6681490fe121c93f
   updateColumn(column) {
     return column.save();
   }

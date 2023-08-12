@@ -47,30 +47,7 @@ class ColumnService {
     return true;
   };
 
-<<<<<<< HEAD
   swapColumnIndexes = async (columnId1, columnId2) => {
-=======
-  updateColumnName = async (columnName) => {
-    const findColumn = await this.columnRepository.findColumnById(ColumnId);
-    if (!findColumn) throw new Error("칼럼을 찾지 못하였습니다.");
-
-    await this.columnRepository.updateColumn(columnName);
-
-    const updateColumnName = await this.columnRepository.findColumnById(ColumnId);
-    return {
-      CcolumnName: updateColumnName.columnName,
-    };
-  };
-
-  deleteColumn = async (ColumnId) => {
-    await this.columnRepository.findColumnCById(ColumnId);
-    await this.columnRepository.deleteColumn(ColumnId);
-
-    return true;
-  };
-
-  swapColumns = async (column1Id, column2Id) => {
->>>>>>> 607a2e0b4f011465e55338bb6681490fe121c93f
     try {
       const column1 = await this.columnRepository.findColumnById(columnId1);
       const column2 = await this.columnRepository.findColumnById(columnId2);

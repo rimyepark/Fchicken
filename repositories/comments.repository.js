@@ -1,4 +1,4 @@
-const { Comments } = require("../models");
+const { Comments, CardInfos, Cards, Users } = require("../models");
 const { Op } = require("sequelize");
 
 class CommentsRepository {
@@ -9,10 +9,39 @@ class CommentsRepository {
   };
   // 댓글 조회
   findAllComments = async (cardId) => {
-    const result = await Comments.findAll({ attributes: ["content", "createUser"] }, { where: { cardId } });
+    const result = await Comments.findAll({
+      attributes: ["content"],
+      where: { cardId },
+      include: [
+        {
+          model: Cards,
+          as: "CardInfos", // 추가된 부분
+          attributes: [],
+          include: [
+            {
+              model: CardInfos,
+              attributes: ["userId"],
+              include: [
+                {
+                  model: Users,
+                  attributes: ["name"],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    });
 
-    return result;
+    // 사용자 이름을 가진 댓글 데이터로 만듭니다.
+    const comments = result.map((comment) => ({
+      content: comment.content,
+      userName: comment.CardInfo.CardInfo.User.name,
+    }));
+
+    return comments;
   };
+
   //댓글 수정
   update = async (data, target) => {
     return await Comments.update(data, { where: { [Op.and]: target } });
