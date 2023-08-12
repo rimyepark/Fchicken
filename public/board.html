@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kanban Board</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+  <title>Board</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -144,11 +145,13 @@ float:left;
         보드 생성
     </a>
   </button>
+  <ul id="Boards"></ul>
+    <!-- <a class="btn btn-primary" id="Board" href="#" role="button">title</a> -->
     </div>
     <div class="column-container">
       <ul id="Columns"></ul>
-      <!--
-        <li> 
+      
+        <!-- <li> 
         <div class="column">
                  <div id="Columns">${columnName}</div>
         <button class="add-card-btn">Add Card</button>
@@ -167,7 +170,7 @@ float:left;
         <div class="card">Card 5</div>
         <div class="card">Card 6</div>
       </div> 
-    </li>-->
+    </li> -->
     </div>
     <button class="add-column-btn"> 
       <a type="button" href="./creat_columns.html" onclick="openPopup(this.href, 1000, 700); return false;"
@@ -178,5 +181,6 @@ float:left;
 </div>
 </div>
 <script src="./js/columns.js"></script>
+<script src="./js/board.js"></script>
 </body>
 </html>
