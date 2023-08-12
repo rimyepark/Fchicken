@@ -4,13 +4,66 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+      body {
+        background-color: #f6f8a9;
+        margin: 0;
+        padding: 0;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      /* 네비게이션 바 스타일 */
+      .navbar {
+        background-color: #f6f8a9;
+        padding: 20px;
+      }
+      .navbar-brand {
+        font-size: 24px;
+        font-weight: bold;
+        color: black;
+      }
+      .navbar-toggler-icon {
+        background-color: black;
+      }
+      .navbar-nav .nav-item .nav-link {
+        color: black;
+        font-weight: bold;
+      }
+
+      /* 커스텀 컨테이너 스타일 */
+      .custom-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+      }
+      #userSubmitButton {
+        background-color: #e9d0d0;
+        border-color: #3f3f3f;
+        width: 200px;
+        padding: 10px 20px;
+        border-radius: 50px;
+        font-size: 16px;
+      }
+      .smaller-input {
+        width: 50%;
+      }
+    </style>
     <title>마이페이지</title>
   </head>
   <body>
     <div class="container mt-5">
-      <h2>비밀번호 변경</h2>
+      <div class="row justify-content-center">
+        <img src="./img/user.PNG" alt="" width="120px" height="120px" />
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-4">
       <form>
         <div class="mb-3">
+          
           <label for="currentPassword" class="form-label">현재비밀번호</label>
           <input type="currentPassword" class="form-control" id="currentPassword" placeholder="현재비밀번호를 입력하세요" required />
         </div>
@@ -18,7 +71,8 @@
           <label for="editPassword" class="form-label">바꿀 비밀번호</label>
           <input type="editPassword" class="form-control" id="editPassword" placeholder="바꿀 비밀번호를 입력하세요" required />
         </div>
-        <button type="submit" class="btn btn-primary" id="userSubmitButton">저장</button>
+        <div class="row justify-content-center">
+        <button type="submit" class="btn btn-primary" id="userSubmitButton">저장</button></div>
       </form>
     </div>
 
