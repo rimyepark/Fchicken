@@ -28,6 +28,10 @@ class CardService {
   findOneCard = async (CardId) => {
     const findOneCardData = await this.cardsRepository.findOneCard(CardId);
 
+    if (!findOneCardData) {
+      throw new Error('해당 카드가 존재하지 않습니다.');
+    }
+
     return findOneCardData;
   };
 

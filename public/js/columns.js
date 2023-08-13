@@ -18,7 +18,7 @@ window.addEventListener("DOMContentLoaded", async function () {
                                 <div class="column-name-input" id="Columns">${columnName}</div>
                                 <button class="edit-column-btn" id="updateColumnName" value="updateColumnName">수정</button>
                             </div>
-                            <button class="add-card-btn">Add Card</button>
+                            <button id="createCard" class="add-card-btn" onclick="createCardPoPup()">Add Card</button>
                             <div class="card-container"></div>
                         </div>
                     </li>
@@ -105,3 +105,31 @@ window.addEventListener("DOMContentLoaded", async function () {
         }
     }
 });
+
+function createCardPoPup() {
+    const popup = window.open('', '_blank', 'width=400,height=300');
+    
+    const popupContent = `
+        <h2>새로운 카드 추가</h2>
+        <label for="cardTitle">카드 제목:</label>
+        <input type="text" id="cardTitle" name="cardTitle"><br><br>
+        
+        <label for="cardContent">카드 내용:</label>
+        <input type="text" id="cardContent" name="cardContent"><br><br>
+        
+        <button onclick="addCard()">작성하기</button>
+    `;
+    
+    popup.document.body.innerHTML = popupContent;
+}
+
+function addCard() {
+    const cardTitle = document.getElementById('cardTitle').value;
+    const cardContent = document.getElementById('cardContent').value;
+    
+    // 여기에서 가져온 cardTitle과 cardContent를 이용하여 카드 추가 작업 수행
+    // ...
+    
+    // 팝업 창 닫기
+    window.close();
+}
