@@ -25,4 +25,9 @@ router.post("/boards/:boardId/columns", (req, res) => {
   res.redirect("./creat_columns.html");
 });
 
+router.put("/columns/:ColumnId", (req, res) => {
+  res.redirect("./columns.html");
+});
+
+
 module.exports = router;
