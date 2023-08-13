@@ -119,7 +119,6 @@ list-style: none;
 li {
 float:left;
 }
-
   </style>
      <script>   
       function openPopup(url, width, height) {
@@ -128,6 +127,44 @@ float:left;
           let options = 'resizable=yes, width=' + width + ', height=' + height + ', top=' + top + ', left=' + left;
           window.open(url, '_blank', options);
       }
+
+      //칼럼 스왑 메서드
+      
+      let draggedCard = null;
+function dragStart(event) {
+   draggedCard = event.target;
+}
+function allowDrop(event) {
+   event.preventDefault();
+}
+async function drop(event, columnId) {
+   event.preventDefault();
+   if (draggedCard) {
+      event.target.appendChild(draggedCard);
+      draggedCard = null;
+      // 서버에 칼럼 위치 변경 요청 보내기
+      const columnId1 = draggedCard.getAttribute("data-column-id");
+      const columnId2 = columnId;
+
+      try {
+         const response = await fetch('/api/swap-columns', {
+            method: 'PUT',
+            headers: {
+               'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ columnId1, columnId2 }),
+         });
+
+         if (response.ok) {
+            console.log("Column indexes swapped successfully.");
+         } else {
+            console.error("Failed to swap column indexes.");
+         }
+      } catch (error) {
+         console.error("Error swapping column indexes:", error);
+      }
+   }
+}
   </script>
 </head>
 <body>
@@ -154,7 +191,7 @@ float:left;
       <ul id="Columns"></ul>
       <!--
         <li> 
-       <div class="column">
+       <div class="column" draggable="true" ondragstart="dragStart(event)" >
   <div class="column-header">
     <input type="text" class="column-name-input" id= "Columns" value="${columnName}" />
     <button class="edit-column-btn" id="updateColumnName >수정</button>
@@ -179,6 +216,8 @@ float:left;
     </div>
 </div>
 </div>
-<script src="./js/columns.js"></script>
+<script src="./js/columns.js">
+  
+</script>
 </body>
 </html>

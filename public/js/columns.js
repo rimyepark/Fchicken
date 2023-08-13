@@ -13,7 +13,7 @@ window.addEventListener("DOMContentLoaded", async function () {
 
                 const temp_html = `
                     <li>
-                    <div class="column" data-ColumnId="${ColumnId}" >
+                    <div class="column" draggable="true" ondragstart="dragStart(event)" data-ColumnId="${ColumnId}" >
                     <div class="column-header">
                       <div class="column-name-input" id="Columns">${columnName}</div>
                       <button class="edit-column-btn" id="updateColumnName" value= "updateColumnName">수정</button>
