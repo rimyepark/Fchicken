@@ -34,3 +34,6 @@ document.getElementById("CreateColumn").addEventListener("click", async function
     alert("칼럼 생성 중 오류가 발생했습니다.");
   }
 });
+
+
+

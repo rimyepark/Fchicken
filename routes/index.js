@@ -26,7 +26,13 @@ router.post("/boards/:boardId/columns", (req, res) => {
 });
 
 router.put("/columns/:ColumnId", (req, res) => {
-  res.redirect("./columns.html");
+  const { ColumnId } = req.query;
+  res.redirect("./columns.html"),{ColumnId};
+});
+
+router.get("/cards/:CardId", (req, res) => {
+  const { CardId } = req.query;
+  res.redirect("./columns.html"),{CardId};
 });
 
 
