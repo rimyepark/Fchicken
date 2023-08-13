@@ -12,6 +12,8 @@ const BoardsRouter = require("./routes/board.route");
 const { SECRET_KEY } = process.env;
 const user = require("./routes/user");
 const BoardRouter = require("./routes/board.route");
+const path = require('path')
+
 const pageRouter = require("./routes/index.js");
 const PORT = 5000;
 app.use(express.json());
@@ -20,7 +22,8 @@ app.use(express.static("public"));
 
 app.use("/", pageRouter);
 app.use(express.urlencoded({ extended: false }));
-// app.use(express.static("assets"));
+app.use(express.static("assets"));
+app.use(express.static(path.join(__dirname, 'public')))
 app.use(
   session({
     secret: SECRET_KEY,

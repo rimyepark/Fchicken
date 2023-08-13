@@ -17,4 +17,12 @@ router.get("/editpassword", (req, res) => {
   res.redirect("./user.html");
 });
 
+router.get("/columns", (req, res) => {
+  res.redirect("./columns.html");
+});
+
+router.post("/boards/:boardId/columns", (req, res) => {
+  res.redirect("./creat_columns.html");
+});
+
 module.exports = router;

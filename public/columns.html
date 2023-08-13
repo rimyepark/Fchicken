@@ -49,6 +49,19 @@
       display: flex;
       flex-direction: row;
       overflow-x: auto;
+      -ms-overflow-style: none; /* 인터넷 익스플로러 */
+scrollbar-width: none; /* 파이어폭스 */
+    }
+
+    .column-container::-webkit-scrollbar {
+display: none; /* Chrome, Safari, Opera*/
+}
+
+    .Columns{
+      min-width: 1200px;
+      flex-direction: row;
+      float:left;
+    
     }
     .column {
       display: flex;
@@ -99,6 +112,15 @@
       border-radius: 10px;
       cursor: pointer;
     }
+
+    ul {
+list-style: none;
+}
+
+li {
+float:left;
+}
+
   </style>
      <script>   
       function openPopup(url, width, height) {
@@ -121,24 +143,28 @@
       <a href="#">Help</a>
     </div>
     <div class="column-container">
-      <!-- <div class="column">
-        <h2>Column 1</h2>
+      <ul id="Columns"></ul>
+      <!--
+        <li> 
+        <div class="column">
+                 <div id="Columns">${columnName}</div>
         <button class="add-card-btn">Add Card</button>
         <div class="card">Card 1</div>
         <div class="card">Card 2</div>
       </div>
       <div class="column">
-        <h2>Column 2</h2>
+             <div id="Columns">${columnName}</div>
         <button class="add-card-btn">Add Card</button>
         <div class="card">Card 3</div>
         <div class="card">Card 4</div>
       </div>
       <div class="column">
-        <h2>Column 3</h2>
+               <div id="Columns">${columnName}</div>
         <button class="add-card-btn">Add Card</button>
         <div class="card">Card 5</div>
         <div class="card">Card 6</div>
-      </div> -->
+      </div> 
+    </li>-->
     </div>
     <button class="add-column-btn"> 
       <a type="button" href="./creat_columns.html" onclick="openPopup(this.href, 1000, 700); return false;"
@@ -146,8 +172,8 @@
       + 칼럼 생성
   </a>
 </button>
-    </div> 
-  </div>
-  <script src="./js/columns.js"></script>
+</div>
+</div>
+<script src="./js/columns.js"></script>
 </body>
 </html>
