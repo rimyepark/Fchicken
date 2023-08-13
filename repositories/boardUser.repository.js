@@ -11,7 +11,7 @@ class BoardUserRepository{
 
     // 권한 확인용 인포 찾기기능
     findOne = async (target) =>{
-        return await BoardInfos.findOne(target)
+        return await BoardInfos.findOne({where:target})
     }
 
     findAll = async (target) =>{
@@ -20,7 +20,7 @@ class BoardUserRepository{
             include: [
                 {
                      model : Boards,
-                     attributes:['title','content','color']
+                     attributes:['title', 'createUser','content','color']
                 },
             ],
             raw: true,

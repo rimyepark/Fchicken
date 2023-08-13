@@ -9,8 +9,8 @@ class BoardController {
   getBoard = async (req, res, next)=> {
     try{
     const { UserId } = req.session.user;
-    const board = await this.boardService.get({UserId})
-    return  res.status(200).json({board:board})
+    const {board} = await this.boardService.get({UserId})
+    return  res.status(200).json({board})
   } catch (err) {
     if (err.code) return res.status(err.code).json({ message: err.message });
     console.error(err);

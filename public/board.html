@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kanban Board</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+  <title>Board</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -50,12 +51,12 @@
       flex-direction: row;
       overflow-x: auto;
       -ms-overflow-style: none; /* 인터넷 익스플로러 */
-      scrollbar-width: none; /* 파이어폭스 */
+scrollbar-width: none; /* 파이어폭스 */
     }
 
     .column-container::-webkit-scrollbar {
-     display: none; /* Chrome, Safari, Opera*/
-    }
+display: none; /* Chrome, Safari, Opera*/
+}
 
     .Columns{
       min-width: 1200px;
@@ -72,7 +73,7 @@
       box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
       border-radius: 10px;
       margin-right: 20px;
-      margin-top: 100px;
+      margin-top: 200px;
     }
     .card {
       margin: 10px 0;
@@ -91,6 +92,7 @@
       border: none;
       border-radius: 10px;
       cursor: pointer;
+      margin-top: 200px;
     }
     .add-card-btn {
       align-self: flex-end;
@@ -143,26 +145,19 @@ float:left;
         보드 생성
     </a>
   </button>
+  <ul id="Boards"></ul>
+    <!-- <a class="btn btn-primary" id="Board" href="#" role="button">title</a> -->
     </div>
-    <button class="add-column-btn"> 
-      <a type="button" href="./creat_columns.html" onclick="openPopup(this.href, 1000, 700); return false;"
-      class="btn btn-dark">
-      + 칼럼 생성
-  </a>
-</button>
     <div class="column-container">
       <ul id="Columns"></ul>
-      <!--
-        <li> 
-       <div class="column">
-  <div class="column-header">
-    <input type="text" class="column-name-input" id= "Columns" value="${columnName}" />
-    <button class="edit-column-btn" id="updateColumnName >수정</button>
-  </div>
-  <button class="add-card-btn">Add Card</button>
-  <div class="card">Card 1</div>
-  <div class="card">Card 2</div>
-</div>
+      
+        <!-- <li> 
+        <div class="column">
+                 <div id="Columns">${columnName}</div>
+        <button class="add-card-btn">Add Card</button>
+        <div class="card">Card 1</div>
+        <div class="card">Card 2</div>
+      </div>
       <div class="column">
              <div id="Columns">${columnName}</div>
         <button class="add-card-btn">Add Card</button>
@@ -175,10 +170,17 @@ float:left;
         <div class="card">Card 5</div>
         <div class="card">Card 6</div>
       </div> 
-    </li>-->
+    </li> -->
     </div>
+    <button class="add-column-btn"> 
+      <a type="button" href="./creat_columns.html" onclick="openPopup(this.href, 1000, 700); return false;"
+      class="btn btn-dark">
+      + 칼럼 생성
+  </a>
+</button>
 </div>
 </div>
 <script src="./js/columns.js"></script>
+<script src="./js/board.js"></script>
 </body>
 </html>

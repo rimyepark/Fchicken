@@ -9,8 +9,8 @@ class BoardService {
     const board = await this.boardUserRepository.findAll({userId:UserId})
 
     if(!board) throw { code:401, message: "보드를 찾을 수 없습니다." }
-  
-    return {board}
+
+    return {code:200, board}
   }
 
   createBoard = async ({ userId, title, content, color }) => {
