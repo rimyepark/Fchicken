@@ -29,5 +29,9 @@ router.put("/columns/:ColumnId", (req, res) => {
   res.redirect("./columns.html");
 });
 
+router.get("/cards/:CardId", (req, res) => {
+  res.redirect("./columns.html");
+});
+
 
 module.exports = router;
