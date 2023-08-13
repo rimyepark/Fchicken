@@ -37,7 +37,7 @@ window.addEventListener("DOMContentLoaded", async function () {
         columnsList.addEventListener('click', async (e) => {
             if (e.target.classList.contains('edit-column-btn')) {
                 const columnElement = e.target.closest('.column');
-                const columnId = columnElement.getAttribute('data-ColumnId');
+                const ColumnId = columnElement.getAttribute('data-ColumnId');
 
                 const newColumnName = prompt('새로운 컬럼 이름을 입력하세요:');
                 if (!newColumnName) return;
@@ -46,7 +46,7 @@ window.addEventListener("DOMContentLoaded", async function () {
                     columnName: newColumnName
                 };
                 try {
-                    const response = await updateColumn(`/api/columns/${columnId}`, data);
+                    const response = await updateColumn(`/api/columns/${ColumnId}`, data);
                     const result = await response.json();
                     if (result.message === '컬럼 이름이 업데이트되었습니다.') {
                         // 업데이트 성공 시 추가 로직을 작성하세요.
@@ -60,13 +60,13 @@ window.addEventListener("DOMContentLoaded", async function () {
         });
     }
 
-    async function renderCards(columnId) {
+    async function renderCards(ColumnId) {
         try {
-            const response = await fetch(`/api/columns/${columnId}/cards`);
+            const response = await fetch(`/api/columns/${ColumnId}/cards`);
             const dataResponse = await response.json();
             const cards = dataResponse.data; // 칼럼에 해당하는 카드 데이터 배열
 
-            const columnElement = document.querySelector(`[data-ColumnId="${columnId}"]`);
+            const columnElement = document.querySelector(`[data-ColumnId="${ColumnId}"]`);
             const cardContainer = columnElement.querySelector('.card-container');
 
             if (cardContainer) {
@@ -103,5 +103,18 @@ window.addEventListener("DOMContentLoaded", async function () {
         } catch (error) {
             throw error;
         }
+    }
+
+    const inviteButton = document.querySelector(".action-btn");
+    if (inviteButton) {
+        inviteButton.addEventListener('click', () => {
+            const nickname = prompt('초대할 닉네임을 입력하세요:');
+            if (nickname) {
+                // 초대 로직을 추가할 수 있습니다.
+                alert(`"${nickname}"을 초대하였습니다.`);
+            } else {
+                alert('취소되었습니다.');
+            }
+        });
     }
 });

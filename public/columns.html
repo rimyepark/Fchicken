@@ -53,6 +53,24 @@
       scrollbar-width: none; /* 파이어폭스 */
     }
 
+    .edit-column-btn{
+      align-self: flex-end;
+      margin-top: 10px;
+      padding: 5px 10px;
+      background-color: white;
+      color: #daaeae;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      border: 1px solid #E8CDCD;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .edit-column-btn:hover {
+  background-color: #E8CDCD; /* 마우스 hover 시 배경색 변경 */
+  color: white; /* 마우스 hover 시 글자색 변경 */
+}
+
     .column-container::-webkit-scrollbar {
      display: none; /* Chrome, Safari, Opera*/
     }
@@ -92,11 +110,22 @@
       border-radius: 10px;
       cursor: pointer;
     }
+    .add-board-btn{
+      min-width: 50px;
+      height: 50px;
+      padding: 5px 10px;
+      background-color: #f9f9f9;
+      box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
+      color: black;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
     .add-card-btn {
       align-self: flex-end;
       margin-top: 10px;
       padding: 5px 10px;
-      background-color: #2196f3;
+      background-color: #E8CDCD;
       color: white;
       border: none;
       border-radius: 3px;
@@ -110,7 +139,27 @@
       padding: 5px 10px;
       border-radius: 10px;
       cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
     }
+    .action-btn:hover {
+  background-color: white; /* 마우스 hover 시 배경색 변경 */
+  color: #d5a0a0; /* 마우스 hover 시 글자색 변경 */
+}
+    .mypage-btn{
+      background-color: #E8CDCD;
+      color: white;
+      box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
+      border: none;
+      padding: 5px 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+
+    }
+    .mypage-btn:hover {
+  background-color: white; /* 마우스 hover 시 배경색 변경 */
+  color: #d5a0a0; /* 마우스 hover 시 글자색 변경 */
+}
 
     ul {
 list-style: none;
@@ -170,11 +219,11 @@ async function drop(event, columnId) {
 <body>
   <div class="board">
     <div class="auth-icons">
-      <button class="action-btn">Login</button>
-      <button class="action-btn">Sign Up</button>
+      <button class="mypage-btn">mypage</button>
+      <button class="action-btn">초대하기</button>
     </div>
     <div class="menu">
-      <button class="add-column-btn"> 
+      <button class="add-board-btn"> 
         <a type="button" href="./createBoard.html" onclick="openPopup(this.href, 1000, 700); return false;"
         class="btn btn-dark">
         보드 생성
