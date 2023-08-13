@@ -13,7 +13,7 @@
       href="https://fonts.googleapis.com/css2?family=Jua&display=swap"
       rel="stylesheet"
     />
-    <title>카드 제목이 들어갑니다</title>
+    <title id="tabTitle">카드 제목이 들어갑니다</title>
     <style>
       * {
         font-family: 'Jua', sans-serif;
@@ -59,6 +59,9 @@
         fetch(`/api/cards/${CardId}`)
           .then((response) => response.json())
           .then((data) => {
+            const tabTitle = document.getElementById('tabTitle');
+            tabTitle.textContent = data.data.title;
+
             const cardTitle = document.getElementById('cardTitle');
             cardTitle.textContent = data.data.title;
 
@@ -74,10 +77,9 @@
       }
 
       document.addEventListener('DOMContentLoaded', function () {
-        // const queryString = window.location.search;
-        // const urlParams = new URLSearchParams(queryString);
-        // const CardId = urlParams.get('CardId');
-        const CardId = '1';
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const CardId = urlParams.get('CardId');
 
         getCardData(CardId);
       });

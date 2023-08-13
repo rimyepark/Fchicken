@@ -3,8 +3,6 @@ const ColumnRepository = require("../repositories/columns.repository");
 class ColumnService {
   columnRepository = new ColumnRepository();
 
-  //userId: Column.userId,boardId: Column.boardId,
-
   findAllColumn = async () => {
     const allColumn = await this.columnRepository.findAllColumn();
     return allColumn.map((Column) => {
