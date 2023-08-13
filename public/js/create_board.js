@@ -4,20 +4,21 @@ async function createBoard(event) {
     try {
       const title = document.getElementById("title").value;
       const content = document.getElementById("content").value;
-      const color = document.getElementById("color").value;
-console.log(color)
-      const createBoard = {
-        title,
-        content,
-        color,
-      };
+      const colors = document.getElementById("color").value;
+      const color = colors.replace("#", "");
+
+      console.log(color)
+
+      const newdata = JSON.stringify({
+          title, content, color
+      });
   
       const response = await fetch("/api/boards", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(createBoard),
+        body: newdata,
       });
   
       const data = await response.json();
