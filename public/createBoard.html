@@ -1,83 +1,84 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
-    <title>보드생성</title>
-    <style>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+<title>보드생성</title>
+<style>
 body {
-        background-color: #f6f8a9;
-        font-family: Arial, sans-serif;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-        margin: 0;
-      }
-   .boardbody{
-    background-color: white;
-        padding: 20px;
-        width: 700px;
-        border-radius: 10px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        text-align: center;
-   }
+  background-color: #f6f8a9;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+}
+.mt-5{
+background-color: white;
+  padding: 20px;
+  width: 700px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
 
-   .btn-primary{
-    background-color: #e8cdcd;
-        color: black;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-      }
-      .btn-primary:hover {
-        background-color: #fff1f1; /* 더 연한 보라색으로 변경 */
-        color: black;
-      } 
-      </style>
-  </head>
-  <body>
-    <div class="boardbody">
-    <div class="container mt-5">
-      <h2>보드생성</h2>
-      <form>
-        <div class="mb-3">
-          <label for="title" class="form-label">title</label>
-          <input type="title" class="form-control" id="title" placeholder="제목을 입력하세요" required />
-        </div>
-        <div class="mb-3">
-          <label for="content" class="form-label">content</label>
-          <input type="content" class="form-control" id="content" placeholder="보더에 대한 설명을 입력하세요" required />
-        </div>
-        <div class="mb-3">
-            <label for="color" class="form-label">Color</label>
-            <input type="color" class="form-control" id="color" required />
-          </div>
-          <button type="submit" class="btn btn-primary" id="createBoardSubmitButton">저장</button>
-        </form>
-      </div>
-    </div>
+.btn-primary{
+background-color: #e8cdcd;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.btn-primary:hover {
+  background-color: #fff1f1; /* 더 연한 보라색으로 변경 */
+  color: black;
+} 
+</style>
+</head>
+<body>
+<div class="container mt-5">
+<h2>보드생성</h2>
+<form>
+<div class="mb-3">
+<label for="title" class="form-label">title</label>
+<input type="title" class="form-control" id="title" placeholder="제목을 입력하세요" required />
 </div>
-    <div class="modal fade" id="signInSuccessModal" tabindex="-1" aria-labelledby="signInSuccessModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="signInSuccessModalLabel">생성 성공</h5>
-          </div>
-          <div class="modal-body">
-            <p>생성 완료되었습니다!</p>
-            <a href="./columns.html" class="btn btn-primary">보더 페이지로 이동</a>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="mb-3">
+<label for="content" class="form-label">content</label>
+<input type="content" class="form-control" id="content" placeholder="보더에 대한 설명을 입력하세요" required />
+</div>
+<div class="mb-3">
+<label for="color" class="form-label">Color</label>
+<input type="color" class="form-control" id="color" required />
+</div>
+<button type="submit" class="btn btn-primary" id="createBoardSubmitButton">저장</button>
+</form>
+</div>
+</div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="./js/create_board.js"></script>
-  </body>
+<div class="modal fade" id="signInSuccessModal" tabindex="-1" aria-labelledby="signInSuccessModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="signInSuccessModalLabel">생성 성공</h5>
+</div>
+<div class="modal-body">
+<p>생성 완료되었습니다!</p>
+<a href="./coulumns.html" class="btn btn-primary">보더 페이지로 이동</a>
+</div>
+</div>
+</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="./js/board.js"></script>
+<script src="./js/create_board.js"></script>
+
+</body>
 </html>
