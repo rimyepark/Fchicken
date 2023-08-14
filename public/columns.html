@@ -12,14 +12,13 @@
       align-items: center;
       min-height: 100vh;
       margin: 0;
-      background-color: #f4f4f4;
+      background-color: #F6F8A9;
     }
     .board {
       width: 100%;
       max-width: 1300px;
       height: 650px;
       display: flex;
-      background-color: #F6F8A9;
       box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
       border-radius: 5px;
       position: relative;
@@ -45,6 +44,31 @@
       min-width: 90px;
       margin-right: 20px;
     }
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+    
+    .header-with-logo {
+      display: flex;
+      justify-content:center;
+      align-items: center;
+      margin-bottom: 0px;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 15px 0;
+      z-index: 1;
+      min-width: 90px;
+      margin-right: 1000px;
+      background-color: #F6F8A9;
+      border-radius: 5px;
+      
+    width: 130px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+
+    }
     .column-container {
       display: flex;
       flex-direction: row;
@@ -67,18 +91,44 @@
     }
 
     .edit-column-btn:hover {
-  background-color: #E8CDCD; /* 마우스 hover 시 배경색 변경 */
-  color: white; /* 마우스 hover 시 글자색 변경 */
+       background-color: #E8CDCD; /* 마우스 hover 시 배경색 변경 */
+       color: white; /* 마우스 hover 시 글자색 변경 */
 }
 
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header {
+      display: flex;
+      justify-content:center;
+      align-items: center;
+      margin-bottom: 0px;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      background-color: white;
+      padding: 15px 0;
+      z-index: 1;
+    }
     .column-container::-webkit-scrollbar {
-     display: none; /* Chrome, Safari, Opera*/
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: flex-start;
+      margin-top: 30px;
     }
 
     .Columns{
       min-width: 1200px;
       flex-direction: row;
       float:left;
+      justify-content: center;
     
     }
     .column {
@@ -91,7 +141,15 @@
       border-radius: 10px;
       margin-right: 20px;
       margin-top: 100px;
+
     }
+    .add-column-btn{
+    margin-top: 30px;
+    padding-left: 0px;
+    padding-right: 0px;
+    }
+  
+    
     .card {
       margin: 10px 0;
       padding: 10px;
@@ -142,8 +200,8 @@
       transition: background-color 0.3s, color 0.3s;
     }
     .action-btn:hover {
-  background-color: white; /* 마우스 hover 시 배경색 변경 */
-  color: #d5a0a0; /* 마우스 hover 시 글자색 변경 */
+      background-color: white; /* 마우스 hover 시 배경색 변경 */
+      color: #d5a0a0; /* 마우스 hover 시 글자색 변경 */
 }
     .mypage-btn{
       background-color: #E8CDCD;
@@ -157,17 +215,18 @@
 
     }
     .mypage-btn:hover {
-  background-color: white; /* 마우스 hover 시 배경색 변경 */
-  color: #d5a0a0; /* 마우스 hover 시 글자색 변경 */
-}
+      background-color: white; /* 마우스 hover 시 배경색 변경 */
+      color: #d5a0a0; /* 마우스 hover 시 글자색 변경 */
+    }
+
 
     ul {
-list-style: none;
-}
+     list-style: none;
+    }
 
-li {
-float:left;
-}
+   li {
+    float:left;
+  }
   </style>
      <script>   
       function openPopup(url, width, height) {
@@ -219,25 +278,38 @@ async function drop(event, columnId) {
 <body>
   <div class="board">
     <div class="auth-icons">
-      <button class="mypage-btn">mypage</button>
+      <a href="./user.html" class="mypage-btn">mypage</a>
       <button class="action-btn">초대하기</button>
     </div>
     <div class="menu">
-      <button class="add-board-btn"> 
+      <button class="add-board-btn">
         <a type="button" href="./createBoard.html" onclick="openPopup(this.href, 1000, 700); return false;"
-        class="btn btn-dark">
-        보드 생성
-    </a>
-  </button>
+           class="btn btn-dark">
+          보드 생성
+        </a>
+      </button>
     </div>
-    <button class="add-column-btn"> 
-      <a type="button" href="./creat_columns.html" onclick="openPopup(this.href, 1000, 700); return false;"
-      class="btn btn-dark">
-      + 칼럼 생성
-  </a>
-</button>
-    <div class="column-container">
-      <ul id="Columns"></ul>
+    <div class="container">
+      <div class="header-with-logo">
+        <img src="./img/logo.png" alt="" width="130px" height="120px">
+      </div>
+      <div class="column-container">
+        <div class="add-column-btn-container">
+          <button class="add-column-btn">
+            <a href="./creat_columns.html" onclick="openPopup(this.href, 1000, 700); return false;"
+               class="btn btn-dark">
+              <img src="./img/칼럼추가.png" alt="" width="130px" height="40px">
+            </a>
+          </button>
+        </div>
+        <ul id="Columns"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/columns.js"></script>
+</body>
+</html>
       <!--
         <li> 
        <div class="column" draggable="true" ondragstart="dragStart(event)" >
